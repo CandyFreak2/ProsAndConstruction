@@ -2,3 +2,4 @@
 
 # TEAM 3 MEMBERS 
  - Jerry Kaufman
+ - Jiwon Park
