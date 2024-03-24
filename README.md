@@ -4,3 +4,4 @@
  - Jerry Kaufman
  - Jiwon Park
  - Lily MacBride
+ - Autumn Miranda
