@@ -4,7 +4,8 @@ public class MovingPlatform : MonoBehaviour
 {
     public float movementSpeed;     
     public int startingPoint;       
-    public Transform[] rangePoints; 
+    public Transform[] rangePoints;
+    public bool isPlatformAllowed;
 
     private int currentPointIndex; 
 
@@ -16,12 +17,15 @@ public class MovingPlatform : MonoBehaviour
 
     void Update()
     {
-        if (HasReachedTargetPoint())
+        if (isPlatformAllowed)
         {
-            MoveToNextPoint();
-        }
+            if (HasReachedTargetPoint())
+            {
+                MoveToNextPoint();
+            }
 
-        MoveTowardsTargetPoint();
+            MoveTowardsTargetPoint();
+        }
     }
 
     bool HasReachedTargetPoint()
@@ -52,5 +56,16 @@ public class MovingPlatform : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         collision.transform.SetParent(null);
+    }
+
+    public void IsPlatformAllowedToMove() {
+        if (!isPlatformAllowed) {
+            isPlatformAllowed = true;
+            Debug.Log("Platform Can Move");
+            // for future usage, anims go below
+        } else if (isActiveAndEnabled) { 
+            isPlatformAllowed = false;
+            Debug.Log("Platform Cannot Move");
+        }
     }
 }
