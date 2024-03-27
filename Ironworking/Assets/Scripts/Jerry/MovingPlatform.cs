@@ -10,7 +10,6 @@ public class MovingPlatform : MonoBehaviour
 
     void Start()
     {
-       
         transform.position = rangePoints[startingPoint].position;
         currentPointIndex = startingPoint; 
     }
@@ -43,5 +42,15 @@ public class MovingPlatform : MonoBehaviour
     void MoveTowardsTargetPoint()
     {
         transform.position = Vector2.MoveTowards(transform.position, rangePoints[currentPointIndex].position, movementSpeed * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        collision.transform.SetParent(transform);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        collision.transform.SetParent(null);
     }
 }
