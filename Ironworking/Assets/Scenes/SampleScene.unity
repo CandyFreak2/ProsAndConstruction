@@ -2082,7 +2082,7 @@ MonoBehaviour:
   - Line Three
   startingIndex: 0
   wordSpeed: 0.06
-  delayBetweenLines: 2
+  delayBetweenLines: 3
 --- !u!70 &2037114277
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
