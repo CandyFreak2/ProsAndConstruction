@@ -6,12 +6,17 @@ using TMPro;
 
 public class NPCSystem : MonoBehaviour
 {
+    [Header("Dialogue Necessary")]
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
     public string[] dialogue;
-    public int index;
+    public int startingIndex;
+
+    [Header("Event Speeds In Seconds")]
     public float wordSpeed;
-    public bool isPlayerNear;
+    public float delayBetweenLines;
+
+    private bool isTyping, isPlayerNear;
 
     // Update is called once per frame
     void Update() {
@@ -27,13 +32,13 @@ public class NPCSystem : MonoBehaviour
 
     public void NullifyText() {
         dialogueText.text = string.Empty;
-        index = 0;
+        startingIndex = 0;
         dialoguePanel.SetActive(false);
     }
 
     public void GoToNextLine() {
-        if (index < dialogue.Length - 1) {
-            index++;
+        if (startingIndex < dialogue.Length - 1) {
+            startingIndex++;
             dialogueText.text = "";
             StartCoroutine(TypeFormat());
         } else {
@@ -55,9 +60,19 @@ public class NPCSystem : MonoBehaviour
     }
 
     IEnumerator TypeFormat() {
-        foreach(char letter in dialogue[index].ToCharArray()) {
+        isTyping = true;
+        foreach(char letter in dialogue[startingIndex].ToCharArray()) {
             dialogueText.text += letter;
             yield return new WaitForSeconds(wordSpeed);
         }
+        isTyping = false;
+
+        yield return new WaitForSeconds(delayBetweenLines);
+
+        if (!isTyping)
+        {
+            GoToNextLine();
+        }
+
     }
 }
