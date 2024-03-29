@@ -20,7 +20,7 @@ public class NPCSystem : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerNear) {
+        if (Input.GetKeyDown(KeyCode.E) && isPlayerNear && dialoguePanel != null) {
             if (dialoguePanel.activeInHierarchy) {
                 NullifyText();
             } else { 
