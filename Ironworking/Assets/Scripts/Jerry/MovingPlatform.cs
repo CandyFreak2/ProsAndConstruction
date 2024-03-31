@@ -56,6 +56,7 @@ public class MovingPlatform : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         collision.transform.SetParent(null);
+        // is causing issues, fix next sprint
     }
 
     public void IsPlatformAllowedToMove() {
