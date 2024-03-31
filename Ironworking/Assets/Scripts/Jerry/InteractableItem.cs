@@ -6,10 +6,12 @@ using UnityEngine.Events;
 
 public class InteractableItem : MonoBehaviour
 {
-    public bool isWithinRange;
+    public bool isWithinRange, needsWrench, needsWeldingMask;
     public UnityEvent interactionEvent;
     public KeyCode interactKey;
     public GameObject eIcon;
+
+    private PlayerManager playerManager;
 
     void Start()
     {
@@ -18,7 +20,7 @@ public class InteractableItem : MonoBehaviour
 
     void Update()
     {
-        if (isWithinRange)
+        if (isWithinRange && (needsWrench || needsWeldingMask))
         {
             if (Input.GetKeyDown(interactKey))
             {
