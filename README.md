@@ -6,3 +6,4 @@
  - Lily MacBride
  - Autumn Miranda
  - Heirloom Luong
+ - Arthur Griffin
