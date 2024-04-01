@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    [SerializeField] float visibility = 0.5f;
-    [SerializeField] int id;
-    SpriteRenderer mSpriteRenderer;
+    [SerializeField] float imageAlpha = 0.5f;
+    [SerializeField] int collectibleID;
+    public PlayerManager playerManager;
+
+    private SpriteRenderer spriteRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
-        mSpriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         //mSpriteRenderer.color = new Color(139f/255, 150f/255, 255f/255, 1f);
     }
 
@@ -22,10 +25,21 @@ public class Collectible : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player") 
+        if (other.gameObject.CompareTag("Player")) 
         {
-            mSpriteRenderer.color = new Color(mSpriteRenderer.color.r, mSpriteRenderer.color.g, mSpriteRenderer.color.b, visibility);
-            GameEvents.instance.ObjectPickupEvent(id);
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, imageAlpha);
+            GameEvents.instance.ObjectPickupEvent(collectibleID);
+            
+            switch (collectibleID)
+            {
+                case 0:
+                    playerManager.SetHasWrench(true);
+                    break;
+                case 1:
+                    playerManager.SetHasWeldingMask(true);
+                    break;
+            }
+
         }
     }
 

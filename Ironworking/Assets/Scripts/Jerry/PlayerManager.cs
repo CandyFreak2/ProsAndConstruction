@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public bool hasWrench, hasWelderMask;
+    private bool hasWrench, hasWelderMask;
 
     // Start is called before the first frame update
     void Start()
