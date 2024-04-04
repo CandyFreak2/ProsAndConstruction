@@ -10,6 +10,7 @@ public class MovingPlatform : MonoBehaviour
 
     private int currentPointIndex;
 
+
     void Start()
     {
         transform.position = rangePoints[startingPoint].position;
