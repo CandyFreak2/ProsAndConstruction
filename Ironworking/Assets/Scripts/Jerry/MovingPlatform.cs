@@ -2,17 +2,18 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public float movementSpeed;     
-    public int startingPoint;       
+    public float movementSpeed;
+    public int startingPoint;
     public Transform[] rangePoints;
     public bool isPlatformAllowed;
+    public bool mustPlayerBeOnPlatform, isAllowedToContinue;
 
-    private int currentPointIndex; 
+    private int currentPointIndex;
 
     void Start()
     {
         transform.position = rangePoints[startingPoint].position;
-        currentPointIndex = startingPoint; 
+        currentPointIndex = startingPoint;
     }
 
     void Update()
@@ -21,9 +22,11 @@ public class MovingPlatform : MonoBehaviour
         {
             if (HasReachedTargetPoint())
             {
-                MoveToNextPoint();
+                if (!mustPlayerBeOnPlatform || IsPlayerOnPlatform())
+                {
+                    MoveToNextPoint();
+                }
             }
-
             MoveTowardsTargetPoint();
         }
     }
@@ -34,12 +37,36 @@ public class MovingPlatform : MonoBehaviour
         return distanceToTarget < 0.02f;
     }
 
+    bool IsPlayerOnPlatform()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.CompareTag("Player"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     void MoveToNextPoint()
     {
-        currentPointIndex++;
-        if (currentPointIndex >= rangePoints.Length)
+        if (!mustPlayerBeOnPlatform)
         {
-            currentPointIndex = 0;
+            currentPointIndex++;
+            if (currentPointIndex >= rangePoints.Length)
+            {
+                currentPointIndex = 0;
+            }
+        }
+        else if (isAllowedToContinue)
+        {
+            currentPointIndex++;
+            if (currentPointIndex >= rangePoints.Length)
+            {
+                currentPointIndex = rangePoints.Length - 1;
+            }
         }
     }
 
@@ -50,21 +77,31 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.transform.SetParent(transform);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(transform);
+            isAllowedToContinue = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        collision.transform.SetParent(null);
-        // is causing issues, fix next sprint
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.SetParent(null);
+            isAllowedToContinue = false;
+        }
     }
 
-    public void IsPlatformAllowedToMove() {
-        if (!isPlatformAllowed) {
+    public void IsPlatformAllowedToMove()
+    {
+        if (!isPlatformAllowed)
+        {
             isPlatformAllowed = true;
             Debug.Log("Platform Can Move");
-            // for future usage, anims go below
-        } else if (isActiveAndEnabled) { 
+        }
+        else
+        {
             isPlatformAllowed = false;
             Debug.Log("Platform Cannot Move");
         }
