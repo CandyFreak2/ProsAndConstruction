@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -9,8 +10,6 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] public float movementSpeed = 3.5f;
     [SerializeField] private Rigidbody2D rigidBody;
-    [SerializeField] private Transform groundPos;
-    [SerializeField] private LayerMask groundLayer;
 
     void Update()
     {

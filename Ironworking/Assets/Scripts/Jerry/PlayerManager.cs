@@ -5,18 +5,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     private bool hasWrench, hasWelderMask;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int roomLocation = 1;
 
     public void SetHasWrench(bool updateBool) => hasWrench = updateBool;
 
@@ -30,5 +19,15 @@ public class PlayerManager : MonoBehaviour
     public bool HasWrench()
     {
         return hasWrench;
+    }
+
+    public int GetCurrentRoomSelection ()
+    {
+        return roomLocation;
+    }
+
+    public void SetRoomLocation(int roomNum)
+    {
+        roomLocation = roomNum;
     }
 }
