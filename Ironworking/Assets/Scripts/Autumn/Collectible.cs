@@ -7,6 +7,7 @@ public class Collectible : MonoBehaviour
     [SerializeField] float imageAlpha = 0.5f;
     [SerializeField] int collectibleID;
     public PlayerManager playerManager;
+    private bool collected = false;
 
     private SpriteRenderer spriteRenderer;
 
@@ -29,15 +30,25 @@ public class Collectible : MonoBehaviour
         {
             spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, imageAlpha);
             GameEvents.instance.ObjectPickupEvent(collectibleID);
-            
-            switch (collectibleID)
+            if (!collected)
             {
-                case 0:
-                    playerManager.SetHasWrench(true);
-                    break;
-                case 1:
-                    playerManager.SetHasWeldingMask(true);
-                    break;
+                switch (collectibleID)
+                {
+                    case 0:
+                        playerManager.SetHasWrench(true);
+                        break;
+                    case 1:
+                        playerManager.SetHasWeldingMask(true);
+                        break;
+                    case 2:
+                        playerManager.AddSmallBeam();
+                        break;
+                    case 3:
+                        playerManager.AddLargeBeam();
+                        break;
+                }
+
+                collected = true;
             }
 
         }

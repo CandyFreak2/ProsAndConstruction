@@ -4,22 +4,16 @@ using UnityEngine;
 
 public class DisplayBeam : MonoBehaviour
 {
-    private float startPosX;
-    private float startPosY;
     private GameObject child;
-    private int childCount = 0;
+    public PlayerManager playerManager;
     // Start is called before the first frame update
     void Start()
     {
-        startPosX = this.transform.localPosition.x;
-        startPosY = this.transform.localPosition.y;
+        child = this.transform.GetChild(0).gameObject;
+        child.SetActive(true);
+        child = this.transform.GetChild(1).gameObject;
+        child.SetActive(false);
 
-        childCount = this.transform.childCount;
-        for (int i = 0; i < childCount; i++)
-        {
-            child = this.transform.GetChild(i).gameObject;
-            child.SetActive(false);
-        }
     }
 
     // Update is called once per frame
@@ -28,13 +22,20 @@ public class DisplayBeam : MonoBehaviour
         
     }
 
-    public void showBeam() 
+    public void showBeam(bool isSmall) 
     {
-        this.transform.localPosition = new Vector3(startPosX, -1.9f, 0);
-        for (int i = 0; i < childCount; i++)
+        child = this.transform.GetChild(0).gameObject;
+        child.SetActive(false);
+        child = this.transform.GetChild(1).gameObject;
+        child.SetActive(true);
+
+        if (isSmall && playerManager != null)
         {
-            child = this.transform.GetChild(i).gameObject;
-            child.SetActive(true);
+            playerManager.RemoveSmallBeam();
+        }
+        else
+        {
+            playerManager.RemoveLargeBeam();
         }
     }
 }

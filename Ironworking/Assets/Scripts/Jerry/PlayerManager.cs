@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    private bool hasWrench, hasWelderMask, hasBeam;
+    private bool hasWrench, hasWelderMask;
     private int smallBeams, largeBeams;
 
     // Start is called before the first frame update
@@ -24,13 +24,6 @@ public class PlayerManager : MonoBehaviour
 
     public void SetHasWeldingMask(bool updateBool) => hasWelderMask = updateBool;
 
-    /*public void SetHasBeam(bool updateBool) => hasBeam = updateBool;
-
-    public bool HasBeam()
-    {
-        return hasBeam;
-    }*/
-
     public bool HasWelderMask()
     {
         return hasWelderMask;
@@ -39,5 +32,50 @@ public class PlayerManager : MonoBehaviour
     public bool HasWrench()
     {
         return hasWrench;
+    }
+
+    public void AddSmallBeam()
+    {
+        smallBeams++;
+        Debug.Log("Beam Count: " + smallBeams);
+    }
+    public void RemoveSmallBeam()
+    {
+        if (smallBeams > 0)
+        {
+            smallBeams--;
+        }
+    }
+
+    public int SmallBeamCount()
+    {
+        return smallBeams;
+    }
+
+    public bool HasSmallBeam() 
+    {
+        return (smallBeams > 0);
+    }
+
+    public void AddLargeBeam()
+    {
+        largeBeams++;
+    }
+    public void RemoveLargeBeam()
+    {
+        if (largeBeams > 0)
+        {
+            largeBeams--;
+        }
+    }
+
+    public int LargeBeamCount()
+    {
+        return largeBeams;
+    }
+
+    public bool HasLargeBeam()
+    {
+        return (largeBeams > 0);
     }
 }

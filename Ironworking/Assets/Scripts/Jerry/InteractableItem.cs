@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class InteractableItem : MonoBehaviour
 {
-    public bool isWithinRange, needsWrench, needsWeldingMask, noNeeds;
+    public bool isWithinRange, needsWrench, needsWeldingMask, needsSmallBeam, needsLargeBeam, noNeeds;
     public UnityEvent interactionEvent;
     public KeyCode interactKey;
     public GameObject eIcon;
@@ -14,7 +14,7 @@ public class InteractableItem : MonoBehaviour
 
     void Start() {
         //eIcon.SetActive(false);
-        if (needsWeldingMask || needsWrench)
+        if (needsWeldingMask || needsWrench || needsSmallBeam || needsLargeBeam)
         {
             noNeeds = false;
         }
@@ -30,7 +30,14 @@ public class InteractableItem : MonoBehaviour
                     interactionEvent.Invoke();
                 }
             }
-            else if (noNeeds) 
+            else if ((needsLargeBeam && playerManager.HasLargeBeam()) || (needsSmallBeam && playerManager.HasSmallBeam()))
+            {
+                if (Input.GetKeyDown(interactKey))
+                {
+                    interactionEvent.Invoke();
+                }
+            }
+            else if (noNeeds)
             {
                 if (Input.GetKeyDown(interactKey))
                 {
