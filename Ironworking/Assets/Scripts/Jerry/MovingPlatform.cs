@@ -5,12 +5,11 @@ public class MovingPlatform : MonoBehaviour
     public float movementSpeed;
     public int startingPoint;
     public Transform[] rangePoints;
-    public bool isPlatformAllowed;
+    public bool isPlatformAllowed, canResetLocation;
     public bool mustPlayerBeOnPlatform, isAllowedToContinue;
 
     private int currentPointIndex;
-
-
+    private const float resetTimer = 0f, resetDelay = 4f;
     void Start()
     {
         transform.position = rangePoints[startingPoint].position;
@@ -26,6 +25,20 @@ public class MovingPlatform : MonoBehaviour
                 if (!mustPlayerBeOnPlatform || IsPlayerOnPlatform())
                 {
                     MoveToNextPoint();
+                    if ((currentPointIndex == (rangePoints.Length - 1)) && transform.position.y == rangePoints[currentPointIndex].position.y)
+                    {
+                        isAllowedToContinue = false;
+                        canResetLocation = true;
+                        if (canResetLocation && Time.time > resetTimer + resetDelay)
+                        {
+                            if (IsPlayerOnPlatform() && !isAllowedToContinue)
+                            {
+                                MoveToSpecificPoint(startingPoint);
+                            }
+                        }
+                        return;
+                    }
+                    isAllowedToContinue = false;
                 }
             }
             MoveTowardsTargetPoint();
@@ -71,6 +84,13 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
+    void MoveToSpecificPoint(int index)
+    {
+        isAllowedToContinue = true;
+        currentPointIndex = index;
+        transform.position = Vector2.MoveTowards(transform.position, rangePoints[currentPointIndex].position, movementSpeed * Time.deltaTime);
+    }
+
     void MoveTowardsTargetPoint()
     {
         transform.position = Vector2.MoveTowards(transform.position, rangePoints[currentPointIndex].position, movementSpeed * Time.deltaTime);
@@ -90,7 +110,9 @@ public class MovingPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.transform.SetParent(null);
-            isAllowedToContinue = false;
+            if (canResetLocation) { 
+                isAllowedToContinue = false;
+            }
         }
     }
 

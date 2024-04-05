@@ -288,7 +288,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 3.5
   rigidBody: {fileID: 504510398}
-  lastGroundPos: {x: 0, y: 0}
 --- !u!50 &504510398
 Rigidbody2D:
   serializedVersion: 4
@@ -459,7 +458,7 @@ Transform:
   m_GameObject: {fileID: 792265000}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.618, y: 3.447, z: -0.047537662}
+  m_LocalPosition: {x: 8.95, y: 3.447, z: -0.047537662}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1418,7 +1417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1335840350408114426, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.455
+      value: -2.2
       objectReference: {fileID: 0}
     - target: {fileID: 1367607068976215685, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
       propertyPath: m_IsActive
@@ -1442,7 +1441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2208318521131608720, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.53
+      value: -2.39
       objectReference: {fileID: 0}
     - target: {fileID: 2208318521131608720, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1510,11 +1509,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7753742243950383764, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.557
+      value: -2.39
       objectReference: {fileID: 0}
     - target: {fileID: 7753742243950383764, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.78
+      value: -8.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
