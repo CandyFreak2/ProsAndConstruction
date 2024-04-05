@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class InteractableItem : MonoBehaviour
 {
-    public bool isWithinRange, needsWrench, needsWeldingMask;
+    public bool isWithinRange, needsWrench, needsWeldingMask, noNeeds;
     public UnityEvent interactionEvent;
     public KeyCode interactKey;
     public GameObject eIcon;
@@ -13,18 +13,34 @@ public class InteractableItem : MonoBehaviour
     private bool isDebugged = false;
 
     void Start() {
-        eIcon.SetActive(false);
+        //eIcon.SetActive(false);
+        if (needsWeldingMask || needsWrench)
+        {
+            noNeeds = false;
+        }
+        else { noNeeds = true; }
     }
 
     void Update() {
         if (isWithinRange && playerManager != null) {
-            if ((needsWrench && playerManager.HasWrench()) || (needsWeldingMask && playerManager.HasWelderMask())) {
-                if (Input.GetKeyDown(interactKey)) {
+            if ((needsWrench && playerManager.HasWrench()) || (needsWeldingMask && playerManager.HasWelderMask()))
+            {
+                if (Input.GetKeyDown(interactKey))
+                {
                     interactionEvent.Invoke();
                 }
-            } 
-            else { 
-                if (!isDebugged) {
+            }
+            else if (noNeeds) 
+            {
+                if (Input.GetKeyDown(interactKey))
+                {
+                    interactionEvent.Invoke();
+                }
+            }
+            else
+            {
+                if (!isDebugged)
+                {
                     Debug.Log("Missing Tool");
                     isDebugged = true;
                 }
@@ -49,10 +65,10 @@ public class InteractableItem : MonoBehaviour
     }
 
     public void NotifyPlayer() {
-        eIcon.SetActive(true);
+        //eIcon.SetActive(true);
     }
 
     public void DeNotifyPlayer() {
-        eIcon.SetActive(false);
+        //eIcon.SetActive(false);
     }
 }
