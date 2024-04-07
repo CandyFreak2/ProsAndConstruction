@@ -6,8 +6,12 @@ using UnityEngine;
 public class LadderMovement : MonoBehaviour
 {
     public float verticalMovement, movementSpeed;
-    private bool isOnLadder, isClimbing;
+    private bool isOnLadder, isClimbing, pauseClimbing;
     private Rigidbody2D rigidBody;
+
+    private float startPosY;
+
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +27,28 @@ public class LadderMovement : MonoBehaviour
         if (isOnLadder && Mathf.Abs(verticalMovement) > 0f)
         {
             isClimbing = true;
-        } 
+            pauseClimbing = false;
+        }
         else
         {
             rigidBody.gravityScale = 4f;
+            pauseClimbing = true;
+        }
+
+        animator.SetBool("IsClimbing", isClimbing);
+        if (startPosY >= transform.position.y && startPosY <= transform.position.y+0.02f) 
+        {
+            animator.SetBool("IsClimbing", false);
+            pauseClimbing = false;
+        }
+
+        if (pauseClimbing && isClimbing)
+        {
+            animator.speed = 0f;
+        }
+        else 
+        {
+            animator.speed = 1f;
         }
     }
 
@@ -44,16 +66,16 @@ public class LadderMovement : MonoBehaviour
         if (collision.CompareTag("Ladder"))
         {
             isOnLadder = true;
+            startPosY = transform.position.y + 0.02f;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.CompareTag("Ladder") && (transform.position.y > collision.transform.position.y))
+        if(collision.CompareTag("Ladder") /*&& (transform.position.y > collision.transform.position.y)*/)
         {
             isOnLadder = false;
             isClimbing = false;
-
         }
     }
 }
