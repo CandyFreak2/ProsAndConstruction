@@ -13,7 +13,10 @@ public class InteractableItem : MonoBehaviour
     private bool isDebugged = false;
 
     void Start() {
-        //eIcon.SetActive(false);
+        if (eIcon != null)
+        {
+            eIcon.SetActive(false);
+        }
         if (needsWeldingMask || needsWrench || needsSmallBeam || needsLargeBeam)
         {
             noNeeds = false;
@@ -72,10 +75,16 @@ public class InteractableItem : MonoBehaviour
     }
 
     public void NotifyPlayer() {
-        //eIcon.SetActive(true);
+        if (eIcon != null)
+        {
+            eIcon.SetActive(true);
+        }
     }
 
     public void DeNotifyPlayer() {
-        //eIcon.SetActive(false);
+        if (eIcon != null)
+        {
+            eIcon.SetActive(false);
+        }
     }
 }
