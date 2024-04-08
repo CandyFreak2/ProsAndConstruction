@@ -17,13 +17,14 @@ public class NPCSystem : MonoBehaviour
     public float delayBetweenLines;
 
     private bool isTyping, isPlayerNear;
+    private bool isFacingRight = true;
 
     // Update is called once per frame
     void Update() {
         if (Input.GetKeyDown(KeyCode.E) && isPlayerNear && dialoguePanel != null) {
             if (dialoguePanel.activeInHierarchy) {
                 NullifyText();
-            } else { 
+            } else {
                 dialoguePanel.SetActive(true);
                 StartCoroutine(TypeFormat());
             }
@@ -49,6 +50,12 @@ public class NPCSystem : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Player") && gameObject != null) {
             isPlayerNear = true;
+            if ((collision.gameObject.GetComponent<Rigidbody2D>().transform.position.x < transform.position.x && isFacingRight) 
+                || (collision.gameObject.GetComponent<Rigidbody2D>().transform.position.x > transform.position.x && !isFacingRight))
+            {
+                Flip();
+            }
+
         }
     }
 
@@ -72,6 +79,17 @@ public class NPCSystem : MonoBehaviour
         if (!isTyping)
         {
             GoToNextLine();
+        }
+    }
+
+    private void Flip()
+    {
+        if (isFacingRight || !isFacingRight)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
         }
     }
 }

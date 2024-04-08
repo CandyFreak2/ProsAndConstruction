@@ -18,7 +18,7 @@ public class InteractableItem : MonoBehaviour
 
     void Update() {
         if (isWithinRange && playerManager != null) {
-            if ((needsWrench && playerManager.HasWrench()) || (needsWeldingMask && playerManager.HasWelderMask())) {
+            if ((needsWrench && playerManager.HasWrench()) || (needsWeldingMask && playerManager.HasWelderMask()) || (!needsWrench || !needsWeldingMask)) {
                 if (Input.GetKeyDown(interactKey)) {
                     interactionEvent.Invoke();
                 }

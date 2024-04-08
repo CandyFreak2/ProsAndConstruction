@@ -1388,8 +1388,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
-      propertyPath: isPlatformAllowed
+      propertyPath: canResetLocation
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
+      propertyPath: isPlatformAllowed
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
       propertyPath: isAllowedToContinue

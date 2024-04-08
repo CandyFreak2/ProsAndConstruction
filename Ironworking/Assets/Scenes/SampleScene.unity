@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &82366194
 RectTransform:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 16, y: 48}
+  m_AnchoredPosition: {x: 193, y: 48}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &82366195
@@ -740,7 +740,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f5884487263a1f9489f27040d4d92cee, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -923,10 +923,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 3.5
   rigidBody: {fileID: 1083191772}
-  groundPos: {fileID: 1715232897}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!1 &1301247559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,8 +1261,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.8784314, g: 0.29411763, b: 0.59619623, a: 1}
+  m_Sprite: {fileID: 21300000, guid: f5884487263a1f9489f27040d4d92cee, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1285,8 +1281,8 @@ Transform:
   m_GameObject: {fileID: 2037114271}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.0206456, y: -2.815, z: 0}
-  m_LocalScale: {x: 1, y: 0.6, z: 1}
+  m_LocalPosition: {x: 2.0206456, y: -2.281, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1345,8 +1341,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5}
-  m_Size: {x: 2, y: 1.9999999}
+  m_Offset: {x: 0, y: -0.05}
+  m_Size: {x: 1, y: 1.5}
   m_Direction: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
