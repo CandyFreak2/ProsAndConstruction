@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     private bool hasWrench, hasWelderMask;
-    private int smallBeams, largeBeams;
+    public int smallBeams, largeBeams;
     
     public int roomLocation = 1;
 

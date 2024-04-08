@@ -1247,7 +1247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1335840350408114426, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.455
+      value: -0.53
       objectReference: {fileID: 0}
     - target: {fileID: 1367607068976215685, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
       propertyPath: m_IsActive
@@ -1888,7 +1888,7 @@ MonoBehaviour:
   previousRoom: {x: -0.03, y: 0}
   nextRoom: {x: 23, y: 0}
   cameraController: {fileID: 921832572}
-  playerManager: {fileID: 0}
+  playerManager: {fileID: 540026305}
   previousRoomNumber: 0
   nextRoomNumber: 0
 --- !u!1 &2105987119
