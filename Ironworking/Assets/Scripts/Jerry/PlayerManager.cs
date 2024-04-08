@@ -1,26 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
     private bool hasWrench, hasWelderMask;
     private int smallBeams, largeBeams;
-
+    
     public int roomLocation = 1;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        smallBeams = 0;
-        largeBeams = 0;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void SetHasWrench(bool updateBool) => hasWrench = updateBool;
 
@@ -36,7 +21,7 @@ public class PlayerManager : MonoBehaviour
         return hasWrench;
     }
 
-    public int GetCurrentRoomSelection ()
+    public int GetCurrentRoomSelection()
     {
         return roomLocation;
     }
@@ -45,8 +30,8 @@ public class PlayerManager : MonoBehaviour
     {
         roomLocation = roomNum;
     }
-    
-    public void AddSmallBeam()
+
+public void AddSmallBeam()
     {
         smallBeams++;
         Debug.Log("Beam Count: " + smallBeams);
