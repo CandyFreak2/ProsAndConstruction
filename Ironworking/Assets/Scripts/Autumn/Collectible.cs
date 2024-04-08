@@ -14,6 +14,7 @@ public class Collectible : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         //mSpriteRenderer.color = new Color(139f/255, 150f/255, 255f/255, 1f);
     }

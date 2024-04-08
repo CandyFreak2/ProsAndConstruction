@@ -13,6 +13,7 @@ public class InteractableItem : MonoBehaviour
     private bool isDebugged = false;
 
     void Start() {
+        playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
         if (eIcon != null)
         {
             eIcon.SetActive(false);

@@ -9,6 +9,7 @@ public class DisplayBeam : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
         child = this.transform.GetChild(0).gameObject;
         child.SetActive(true);
         child = this.transform.GetChild(1).gameObject;
