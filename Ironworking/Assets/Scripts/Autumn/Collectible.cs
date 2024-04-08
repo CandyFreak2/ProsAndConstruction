@@ -30,7 +30,7 @@ public class Collectible : MonoBehaviour
         if (other.gameObject.CompareTag("Player")) 
         {
             spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, imageAlpha);
-            GameEvents.instance.ObjectPickupEvent(collectibleID);
+            //GameEvents.instance.ObjectPickupEvent(collectibleID);
             if (!collected)
             {
                 switch (collectibleID)
