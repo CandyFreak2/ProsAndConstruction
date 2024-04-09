@@ -15,7 +15,7 @@ public class RoomChange : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (collision.transform.position.x < transform.position.x)
+            if (collision.transform.position.x > transform.position.x)
             {
                 cameraController.MoveCameraPos(nextRoom);
                 playerManager.SetRoomLocation(nextRoomNumber);
