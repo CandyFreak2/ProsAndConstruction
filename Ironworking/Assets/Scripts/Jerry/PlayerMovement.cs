@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float horizontalMovement;
-    private bool isFacingRight = true;
+    public float horizontalMovement;
+    public bool isFacingRight = true;
 
     [SerializeField] public float movementSpeed = 3.5f;
     [SerializeField] private Rigidbody2D rigidBody;
@@ -17,7 +16,8 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(horizontalMovement));
-        if (horizontalMovement != 0)
+
+        if (Mathf.Abs(horizontalMovement) > 0f)
         {
             Flip(horizontalMovement > 0);
         }
@@ -35,5 +35,11 @@ public class PlayerMovement : MonoBehaviour
             this.isFacingRight = isFacingRight;
             transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         }
+    }
+
+    // Set horizontal movement directly
+    public void SetHorizontalMovement(float movement)
+    {
+        horizontalMovement = movement;
     }
 }
