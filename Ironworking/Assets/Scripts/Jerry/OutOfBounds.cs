@@ -3,14 +3,14 @@ using UnityEngine;
 public class OutOfBounds : MonoBehaviour
 {
     public PlayerManager playerManager;
-    public GameObject[] levelRespawns;
+    public OutOfBoundsHolder boundsContainer;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player Fell Through");
-            collision.gameObject.transform.position = levelRespawns[playerManager.GetCurrentRoomSelection() - 1].transform.position;
+            collision.gameObject.transform.position = boundsContainer.GetLevelSpawnAtIndex(playerManager.GetCurrentRoomSelection() - 1);
         }
     }
 }
