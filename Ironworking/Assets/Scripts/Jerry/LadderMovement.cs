@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class LadderMovement : MonoBehaviour
@@ -8,18 +7,18 @@ public class LadderMovement : MonoBehaviour
     public float verticalMovement, movementSpeed;
     private bool isOnLadder, isClimbing, pauseClimbing;
     private Rigidbody2D rigidBody;
+    private PlayerMovement playerMovement;
 
     private float startPosY;
 
     public Animator animator;
 
-    // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         verticalMovement = Input.GetAxis("Vertical");
@@ -28,15 +27,17 @@ public class LadderMovement : MonoBehaviour
         {
             isClimbing = true;
             pauseClimbing = false;
+            playerMovement.SetHorizontalMovement(0f); 
         }
         else
         {
             rigidBody.gravityScale = 4f;
             pauseClimbing = true;
+            playerMovement.SetHorizontalMovement(Input.GetAxisRaw("Horizontal"));
         }
 
         animator.SetBool("IsClimbing", isClimbing);
-        if (startPosY >= transform.position.y && startPosY <= transform.position.y+0.02f) 
+        if (startPosY >= transform.position.y && startPosY <= transform.position.y + 0.02f)
         {
             animator.SetBool("IsClimbing", false);
             pauseClimbing = false;
@@ -46,7 +47,7 @@ public class LadderMovement : MonoBehaviour
         {
             animator.speed = 0f;
         }
-        else 
+        else
         {
             animator.speed = 1f;
         }
@@ -66,16 +67,17 @@ public class LadderMovement : MonoBehaviour
         if (collision.CompareTag("Ladder"))
         {
             isOnLadder = true;
-            startPosY = transform.position.y + 0.02f;
+            /*startPosY = transform.position.y + 0.02f;*/
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.CompareTag("Ladder") /*&& (transform.position.y > collision.transform.position.y)*/)
+        if (collision.CompareTag("Ladder"))
         {
             isOnLadder = false;
             isClimbing = false;
+            playerMovement.SetHorizontalMovement(Input.GetAxisRaw("Horizontal"));
         }
     }
 }
