@@ -16,17 +16,13 @@ public class NPCSystem : MonoBehaviour
     public float wordSpeed;
     public float delayBetweenLines;
 
-    private bool isTyping, isPlayerNear;
+    private bool isTyping, isPlayerNear, canWrite, hasFinishedInteraction;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerNear && dialoguePanel != null)
+        if (Input.GetKeyDown(KeyCode.E) && isPlayerNear && dialoguePanel != null && !hasFinishedInteraction)
         {
-            if (dialoguePanel.activeInHierarchy)
-            {
-                NullifyText();
-            }
-            else
+            if (!dialoguePanel.activeInHierarchy && canWrite)
             {
                 dialoguePanel.SetActive(true);
                 StartCoroutine(TypeFormat());
@@ -34,9 +30,20 @@ public class NPCSystem : MonoBehaviour
         }
     }
 
+    public bool GetHasInteractionFinished()
+    {
+        return hasFinishedInteraction;
+    }
+
+
+    public void SetHasInteractionFinished(bool interactionUpdate)
+    {
+        hasFinishedInteraction = interactionUpdate;
+    }
+
     public void NullifyText()
     {
-        dialogueText.text = string.Empty;
+        dialogueText.text = "";
         startingIndex = 0;
         dialoguePanel.SetActive(false);
     }
@@ -57,18 +64,25 @@ public class NPCSystem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && gameObject != null)
+        if (collision.CompareTag("Player") && dialoguePanel != null)
         {
             isPlayerNear = true;
+            if (dialogueText.text == string.Empty)
+            {
+                canWrite = true;
+            } 
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && gameObject != null)
+        if (collision.CompareTag("Player") && dialoguePanel != null)
         {
             isPlayerNear = false;
-            NullifyText();
+            if (dialogueText.text != string.Empty)
+            {
+                canWrite = false;
+            }
         }
     }
 
@@ -89,5 +103,10 @@ public class NPCSystem : MonoBehaviour
             GoToNextLine();
         }
 
+        if (startingIndex == (dialogue.Length - 1))
+        {
+            hasFinishedInteraction = true;
+            canWrite = false;
+        }
     }
 }

@@ -355,7 +355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &102539173
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8011,7 +8011,7 @@ GameObject:
   - component: {fileID: 1863990414}
   - component: {fileID: 1863990413}
   m_Layer: 0
-  m_Name: Tilemap
+  m_Name: GroundTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8450,7 +8450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8032406619680048551, guid: 0f00f228c3a2dd84aa6024b0f45c3cd3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.43
+      value: -2.461
       objectReference: {fileID: 0}
     - target: {fileID: 8032406619680048551, guid: 0f00f228c3a2dd84aa6024b0f45c3cd3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9814,5 +9814,7 @@ SceneRoots:
   - {fileID: 1956235990}
   - {fileID: 467571596}
   - {fileID: 1862819396}
-  - {fileID: 1676943717}
   - {fileID: 1695839825}
+  - {fileID: 202462381}
+  - {fileID: 1160739144}
+  - {fileID: 1646251160}
