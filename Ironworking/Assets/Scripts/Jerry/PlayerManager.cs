@@ -2,14 +2,28 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    private UISetter ui;
     private bool hasWrench, hasWelderMask;
     public int smallBeams, largeBeams;
     
     public int roomLocation = 1;
 
-    public void SetHasWrench(bool updateBool) => hasWrench = updateBool;
+    public void SetHasWrench(bool updateBool)
+    {
+        hasWrench = updateBool;
+        if (hasWrench){ ui.ShowToolUI(0); }
+    }
 
-    public void SetHasWeldingMask(bool updateBool) => hasWelderMask = updateBool;
+    public void SetHasWeldingMask(bool updateBool)
+    {
+        hasWelderMask = updateBool;
+        if (hasWelderMask) { ui.ShowToolUI(1); }
+    }
+
+    void Awake() 
+    {
+        ui = GameObject.Find("Canvas").GetComponent<UISetter>();
+    }
 
     public bool HasWelderMask()
     {
@@ -34,13 +48,14 @@ public class PlayerManager : MonoBehaviour
 public void AddSmallBeam()
     {
         smallBeams++;
-        Debug.Log("Beam Count: " + smallBeams);
+        ui.UpdateBeamText(true, smallBeams);
     }
     public void RemoveSmallBeam()
     {
         if (smallBeams > 0)
         {
             smallBeams--;
+            ui.UpdateBeamText(true, smallBeams);
         }
     }
 
@@ -57,12 +72,14 @@ public void AddSmallBeam()
     public void AddLargeBeam()
     {
         largeBeams++;
+        ui.UpdateBeamText(false, largeBeams);
     }
     public void RemoveLargeBeam()
     {
         if (largeBeams > 0)
         {
             largeBeams--;
+            ui.UpdateBeamText(false, largeBeams);
         }
     }
 

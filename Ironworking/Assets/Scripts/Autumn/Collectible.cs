@@ -19,18 +19,12 @@ public class Collectible : MonoBehaviour
         //mSpriteRenderer.color = new Color(139f/255, 150f/255, 255f/255, 1f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player")) 
         {
             spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, imageAlpha);
-            //GameEvents.instance.ObjectPickupEvent(collectibleID);
             if (!collected)
             {
                 switch (collectibleID)

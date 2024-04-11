@@ -17,12 +17,6 @@ public class DisplayText : MonoBehaviour
         popupTool = this.GetComponent<Image>(); ;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void showText() 
     {
         if (popupTool.color.a > 0f)
