@@ -27,7 +27,7 @@ public class LadderMovement : MonoBehaviour
         {
             isClimbing = true;
             pauseClimbing = false;
-            playerMovement.SetHorizontalMovement(0f); 
+            playerMovement.SetHorizontalMovement(0f);
         }
         else
         {
@@ -67,7 +67,7 @@ public class LadderMovement : MonoBehaviour
         if (collision.CompareTag("Ladder"))
         {
             isOnLadder = true;
-            /*startPosY = transform.position.y + 0.02f;*/
+            startPosY = collision.transform.position.y;
         }
     }
 
@@ -79,5 +79,10 @@ public class LadderMovement : MonoBehaviour
             isClimbing = false;
             playerMovement.SetHorizontalMovement(Input.GetAxisRaw("Horizontal"));
         }
+    }
+
+    public bool GetIsPlayerClimbing()
+    {
+        return isClimbing;
     }
 }

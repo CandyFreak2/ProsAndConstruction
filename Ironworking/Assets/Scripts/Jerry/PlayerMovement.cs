@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isFacingRight = true;
 
     [SerializeField] public float movementSpeed = 3.5f;
+    [SerializeField] public float ladderMovement = 1.5f;
     [SerializeField] private Rigidbody2D rigidBody;
 
     public Animator animator;
@@ -17,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(horizontalMovement));
 
-        if (Mathf.Abs(horizontalMovement) > 0f)
+        if (Mathf.Abs(horizontalMovement) > 0f && !IsClimbingLadder())
         {
             Flip(horizontalMovement > 0);
         }
@@ -25,7 +26,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigidBody.velocity = new Vector2(horizontalMovement * movementSpeed, rigidBody.velocity.y);
+        if (!IsClimbingLadder())
+        {
+            rigidBody.velocity = new Vector2(horizontalMovement * movementSpeed, rigidBody.velocity.y);
+        }
+        else
+        {
+            rigidBody.velocity = new Vector2(horizontalMovement * ladderMovement, rigidBody.velocity.y);
+        }
     }
 
     private void Flip(bool isFacingRight)
@@ -37,9 +45,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // Set horizontal movement directly
     public void SetHorizontalMovement(float movement)
     {
         horizontalMovement = movement;
+    }
+
+    private bool IsClimbingLadder()
+    {
+        return GetComponent<LadderMovement>() != null && GetComponent<LadderMovement>().GetIsPlayerClimbing();
     }
 }
