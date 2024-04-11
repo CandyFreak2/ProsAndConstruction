@@ -6,10 +6,8 @@ public class MovingPlatform : MonoBehaviour
     public int startingPoint;
     public Transform[] rangePoints;
     public bool isPlatformAllowed;
-    public bool mustPlayerBeOnPlatform, isAllowedToContinue;
 
     private int currentPointIndex;
-
 
     void Start()
     {
@@ -23,30 +21,12 @@ public class MovingPlatform : MonoBehaviour
         {
             if (HasReachedTargetPoint())
             {
-                if (!mustPlayerBeOnPlatform || IsPlayerOnPlatform())
-                {
-                    MoveToNextPoint();
+                MoveToNextPoint();
+            }
 
-                    if (currentPointIndex == rangePoints.Length - 1 && transform.position.y == rangePoints[currentPointIndex].position.y)
-                    {
-                        if (IsPlayerOnPlatform())
-                        {
-                            currentPointIndex = 0;
-                            isPlatformAllowed = !isPlatformAllowed;
-                            isAllowedToContinue = true;
-                            return;
-                        }
-                    }
-                }
-            }
-            if (isAllowedToContinue)
-            {
-                MoveTowardsTargetPoint();
-                return;
-            }
+            MoveTowardsTargetPoint();
         }
     }
-
 
     bool HasReachedTargetPoint()
     {
@@ -54,36 +34,12 @@ public class MovingPlatform : MonoBehaviour
         return distanceToTarget < 0.02f;
     }
 
-    bool IsPlayerOnPlatform()
-    {
-        foreach (Transform child in transform)
-        {
-            if (child.CompareTag("Player"))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
     void MoveToNextPoint()
     {
-        if (!mustPlayerBeOnPlatform)
+        currentPointIndex++;
+        if (currentPointIndex >= rangePoints.Length)
         {
-            currentPointIndex++;
-            if (currentPointIndex >= rangePoints.Length)
-            {
-                currentPointIndex = 0;
-            }
-        }
-        else if (isAllowedToContinue)
-        {
-            currentPointIndex++;
-            if (currentPointIndex >= rangePoints.Length)
-            {
-                currentPointIndex = rangePoints.Length - 1;
-            }
+            currentPointIndex = 0;
         }
     }
 
@@ -94,20 +50,12 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.transform.SetParent(transform);
-            isAllowedToContinue = true;
-        }
+        collision.transform.SetParent(transform);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.transform.SetParent(null);
-            isAllowedToContinue = false;
-        }
+        collision.transform.SetParent(null);
     }
 
     public void IsPlatformAllowedToMove()
@@ -117,7 +65,7 @@ public class MovingPlatform : MonoBehaviour
             isPlatformAllowed = true;
             Debug.Log("Platform Can Move");
         }
-        else
+        else if (isActiveAndEnabled)
         {
             isPlatformAllowed = false;
             Debug.Log("Platform Cannot Move");

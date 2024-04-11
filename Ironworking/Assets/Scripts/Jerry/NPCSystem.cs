@@ -16,59 +16,81 @@ public class NPCSystem : MonoBehaviour
     public float wordSpeed;
     public float delayBetweenLines;
 
-    private bool isTyping, isPlayerNear;
-    private bool isFacingRight = true;
+    private bool isTyping, isPlayerNear, canWrite, hasFinishedInteraction;
 
-    // Update is called once per frame
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerNear && dialoguePanel != null) {
-            if (dialoguePanel.activeInHierarchy) {
-                NullifyText();
-            } else {
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && isPlayerNear && dialoguePanel != null && !hasFinishedInteraction)
+        {
+            if (!dialoguePanel.activeInHierarchy && canWrite)
+            {
                 dialoguePanel.SetActive(true);
                 StartCoroutine(TypeFormat());
             }
         }
     }
 
-    public void NullifyText() {
-        dialogueText.text = string.Empty;
+    public bool GetHasInteractionFinished()
+    {
+        return hasFinishedInteraction;
+    }
+
+
+    public void SetHasInteractionFinished(bool interactionUpdate)
+    {
+        hasFinishedInteraction = interactionUpdate;
+    }
+
+    public void NullifyText()
+    {
+        dialogueText.text = "";
         startingIndex = 0;
         dialoguePanel.SetActive(false);
     }
 
-    public void GoToNextLine() {
-        if (startingIndex < dialogue.Length - 1) {
+    public void GoToNextLine()
+    {
+        if (startingIndex < dialogue.Length - 1)
+        {
             startingIndex++;
             dialogueText.text = "";
             StartCoroutine(TypeFormat());
-        } else {
+        }
+        else
+        {
             NullifyText();
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.CompareTag("Player") && gameObject != null) {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && dialoguePanel != null)
+        {
             isPlayerNear = true;
-            if ((collision.gameObject.GetComponent<Rigidbody2D>().transform.position.x < transform.position.x && isFacingRight) 
-                || (collision.gameObject.GetComponent<Rigidbody2D>().transform.position.x > transform.position.x && !isFacingRight))
+            if (dialogueText.text == string.Empty)
             {
-                Flip();
-            }
-
+                canWrite = true;
+            } 
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision) {
-        if (collision.CompareTag("Player") && gameObject != null) {
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && dialoguePanel != null)
+        {
             isPlayerNear = false;
-            NullifyText();
+            if (dialogueText.text != string.Empty)
+            {
+                canWrite = false;
+            }
         }
     }
 
-    IEnumerator TypeFormat() {
+    IEnumerator TypeFormat()
+    {
         isTyping = true;
-        foreach(char letter in dialogue[startingIndex].ToCharArray()) {
+        foreach (char letter in dialogue[startingIndex].ToCharArray())
+        {
             dialogueText.text += letter;
             yield return new WaitForSeconds(wordSpeed);
         }
@@ -80,16 +102,11 @@ public class NPCSystem : MonoBehaviour
         {
             GoToNextLine();
         }
-    }
 
-    private void Flip()
-    {
-        if (isFacingRight || !isFacingRight)
+        if (startingIndex == (dialogue.Length - 1))
         {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
+            hasFinishedInteraction = true;
+            canWrite = false;
         }
     }
 }
