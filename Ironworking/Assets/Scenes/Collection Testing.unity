@@ -1202,6 +1202,18 @@ PrefabInstance:
       propertyPath: movementSpeed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4904729237579357626, guid: 0f00f228c3a2dd84aa6024b0f45c3cd3, type: 3}
+      propertyPath: beamPlace
+      value: 
+      objectReference: {fileID: 8300000, guid: f7b9605db04fa2d448cac7083de71c7b, type: 3}
+    - target: {fileID: 4904729237579357626, guid: 0f00f228c3a2dd84aa6024b0f45c3cd3, type: 3}
+      propertyPath: beamPickup
+      value: 
+      objectReference: {fileID: 8300000, guid: f7b9605db04fa2d448cac7083de71c7b, type: 3}
+    - target: {fileID: 4904729237579357626, guid: 0f00f228c3a2dd84aa6024b0f45c3cd3, type: 3}
+      propertyPath: toolPickup
+      value: 
+      objectReference: {fileID: 8300000, guid: 1822acb5d805db5459f575b803a91b4c, type: 3}
     - target: {fileID: 6108144039940919110, guid: 0f00f228c3a2dd84aa6024b0f45c3cd3, type: 3}
       propertyPath: m_Constraints
       value: 4

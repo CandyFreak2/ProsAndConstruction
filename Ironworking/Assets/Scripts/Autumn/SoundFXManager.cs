@@ -18,7 +18,7 @@ public class SoundFXManager : MonoBehaviour
     }
 
     /*play a clipped version of a soundfx*/
-    public void playSoundFXClipped(AudioClip audioClip, Transform spawnTransform, float volume, float startTime, float soundLength)
+    public void PlaySoundFXClipped(AudioClip audioClip, Transform spawnTransform, float volume, float startTime, float soundLength)
     {
 
         AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
@@ -36,7 +36,7 @@ public class SoundFXManager : MonoBehaviour
 
 
     /*play the full version of a soundfx*/
-    public void playSoundFXFull(AudioClip audioClip, Transform spawnTransform, float volume)
+    public void PlaySoundFXFull(AudioClip audioClip, Transform spawnTransform, float volume)
     {
         AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
 
@@ -51,7 +51,7 @@ public class SoundFXManager : MonoBehaviour
     }
 
     //if another Single audio clip is playing, it will be cutoff + deleted by the new one
-    public void playSingle(AudioClip audioClip, Transform spawnTransform, float volume)
+    public void PlaySingle(AudioClip audioClip, Transform spawnTransform, float volume)
     {
         GameObject singleSound = GameObject.FindWithTag("Single");
         if (singleSound != null)
