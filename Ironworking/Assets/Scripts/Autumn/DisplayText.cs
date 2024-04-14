@@ -14,7 +14,7 @@ public class DisplayText : MonoBehaviour
     {
         desc = this.transform.GetChild(0).gameObject.GetComponent<TMP_Text>(); 
         desc.enabled = false;
-        popupTool = this.GetComponent<Image>(); ;
+        popupTool = this.GetComponent<Image>();
     }
 
     public void showText() 
