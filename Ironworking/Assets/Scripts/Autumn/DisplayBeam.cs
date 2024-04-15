@@ -35,4 +35,12 @@ public class DisplayBeam : MonoBehaviour
             playerManager.RemoveLargeBeam();
         }
     }
+
+    public void fixBeam()
+    {
+        child = this.transform.GetChild(0).gameObject;
+        child.SetActive(false);
+        child = this.transform.GetChild(1).gameObject;
+        child.SetActive(true);
+    }
 }
