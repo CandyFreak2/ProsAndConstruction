@@ -15,7 +15,6 @@ public class DisplayBeam : MonoBehaviour
         child.SetActive(true);
         child = this.transform.GetChild(1).gameObject;
         child.SetActive(false);
-
     }
 
 
