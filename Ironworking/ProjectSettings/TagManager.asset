@@ -10,6 +10,7 @@ TagManager:
   - RoomTrigger
   - Platform
   - OutOfBounds
+  - Single
   layers:
   - Default
   - TransparentFX

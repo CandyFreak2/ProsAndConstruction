@@ -6,6 +6,7 @@ public class DisplayBeam : MonoBehaviour
 {
     private GameObject child;
     public PlayerManager playerManager;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +18,6 @@ public class DisplayBeam : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void showBeam(bool isSmall) 
     {

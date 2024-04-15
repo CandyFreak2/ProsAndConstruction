@@ -1044,6 +1044,52 @@ Transform:
   - {fileID: 1566144440}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &815308029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 815308031}
+  - component: {fileID: 815308030}
+  m_Layer: 0
+  m_Name: SoundFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &815308030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815308029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d29cc1ad3478eb4097f7ba1d8d58072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundFXObject: {fileID: 3965491756546297692, guid: 24a9ecee887c0494a872feefc37e0d89, type: 3}
+  singleSoundFXObject: {fileID: 8466312480324765729, guid: fe464e76ecdfaa940b00e8088f03b206, type: 3}
+--- !u!4 &815308031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815308029}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.349243, y: -1.4094003, z: -0.09096489}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &921832568
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,6 +1202,18 @@ PrefabInstance:
       propertyPath: movementSpeed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4904729237579357626, guid: 0f00f228c3a2dd84aa6024b0f45c3cd3, type: 3}
+      propertyPath: beamPlace
+      value: 
+      objectReference: {fileID: 8300000, guid: f7b9605db04fa2d448cac7083de71c7b, type: 3}
+    - target: {fileID: 4904729237579357626, guid: 0f00f228c3a2dd84aa6024b0f45c3cd3, type: 3}
+      propertyPath: beamPickup
+      value: 
+      objectReference: {fileID: 8300000, guid: f7b9605db04fa2d448cac7083de71c7b, type: 3}
+    - target: {fileID: 4904729237579357626, guid: 0f00f228c3a2dd84aa6024b0f45c3cd3, type: 3}
+      propertyPath: toolPickup
+      value: 
+      objectReference: {fileID: 8300000, guid: 1822acb5d805db5459f575b803a91b4c, type: 3}
     - target: {fileID: 6108144039940919110, guid: 0f00f228c3a2dd84aa6024b0f45c3cd3, type: 3}
       propertyPath: m_Constraints
       value: 4
@@ -2601,3 +2659,4 @@ SceneRoots:
   - {fileID: 4219207886964732186}
   - {fileID: 4976345780382477593}
   - {fileID: 1016321823}
+  - {fileID: 815308031}
