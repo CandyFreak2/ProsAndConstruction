@@ -12,13 +12,13 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private AudioClip beamPlace;
     [SerializeField] private AudioClip beamPickup;
     [SerializeField] private AudioClip toolPickup;
-    //[SerializeField] float audioStartTime;
-    //[SerializeField] float audioLength;
+    [SerializeField] float audioStartTime;
+    [SerializeField] float audioLength;
 
     void Awake()
     {
         ui = GameObject.Find("Canvas").GetComponent<UISetter>();
-        //soundFX = GameObject.Find("SoundFXManager").GetComponent<SoundFXManager>();
+        soundFX = GameObject.Find("SoundFXManager").GetComponent<SoundFXManager>();
     }
 
     public void SetHasWrench(bool updateBool)
@@ -27,9 +27,9 @@ public class PlayerManager : MonoBehaviour
         if (hasWrench)
         { 
             ui.ShowToolUI(0);
-            if (toolPickup != null)
+            if (toolPickup != null && soundFX != null)
             {
-                //soundFX.PlaySoundFXFull(toolPickup, transform, 1.0f);
+                soundFX.PlaySoundFXFull(toolPickup, transform, 1.0f);
             }
         } 
     }
@@ -40,9 +40,9 @@ public class PlayerManager : MonoBehaviour
         if (hasWelderMask) 
         {
             ui.ShowToolUI(1);
-            if (toolPickup != null)
+            if (toolPickup != null && soundFX != null)
             {
-                //soundFX.PlaySoundFXFull(toolPickup, transform, 1.0f);
+                soundFX.PlaySoundFXFull(toolPickup, transform, 1.0f);
             }
         }
     }
@@ -71,9 +71,9 @@ public void AddSmallBeam()
     {
         smallBeams++;
         ui.UpdateBeamText(true, smallBeams);
-        if (beamPickup != null)
+        if (beamPickup != null && soundFX != null)
         {
-            //soundFX.PlaySoundFXFull(beamPickup, transform, 1.0f);
+            soundFX.PlaySoundFXFull(beamPickup, transform, 1.0f);
         }
     }
     public void RemoveSmallBeam()
@@ -82,9 +82,9 @@ public void AddSmallBeam()
         {
             smallBeams--;
             ui.UpdateBeamText(true, smallBeams);
-            if (beamPlace != null)
+            if (beamPlace != null && soundFX != null)
             {
-                //soundFX.PlaySoundFXFull(beamPlace, transform, 1.0f);
+                soundFX.PlaySoundFXFull(beamPlace, transform, 1.0f);
             }
         }
     }
@@ -103,7 +103,7 @@ public void AddSmallBeam()
     {
         largeBeams++;
         ui.UpdateBeamText(false, largeBeams);
-        if (beamPickup != null)
+        if (beamPickup != null && soundFX != null)
         {
             soundFX.PlaySoundFXFull(beamPickup, transform, 1.0f);
         }
@@ -114,7 +114,7 @@ public void AddSmallBeam()
         {
             largeBeams--;
             ui.UpdateBeamText(false, largeBeams);
-            if (beamPlace != null)
+            if (beamPlace != null && soundFX != null)
             {
                 soundFX.PlaySoundFXFull(beamPlace, transform, 1.0f);
             }
