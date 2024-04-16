@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float horizontalMovement;
-    public bool isFacingRight = true;
+    public bool isFacingRight = true, isOnGround = false;
+    public Animator animator;
 
     [SerializeField] public float movementSpeed = 3.5f;
     [SerializeField] public float ladderMovement = 1.5f;
     [SerializeField] private Rigidbody2D rigidBody;
 
-    public Animator animator;
 
     void Update()
     {
@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rigidBody.velocity = new Vector2(horizontalMovement * movementSpeed, rigidBody.velocity.y);
         }
-        else
+        else if (IsClimbingLadder()/* && !isOnGround*/)
         {
             rigidBody.velocity = new Vector2(horizontalMovement * ladderMovement, rigidBody.velocity.y);
         }
@@ -57,5 +57,21 @@ public class PlayerMovement : MonoBehaviour
     private bool IsClimbingPaused()
     {
         return GetComponent<LadderMovement>() != null && GetComponent<LadderMovement>().GetIsClimbPaused();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            isOnGround = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            isOnGround = false;
+        }
     }
 }

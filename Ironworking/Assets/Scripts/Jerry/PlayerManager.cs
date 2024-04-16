@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    private bool hasWrench, hasWelderMask;
+    public bool hasWrench, hasWelderMask;
     public int smallBeams, largeBeams;
     
     public int roomLocation = 1;

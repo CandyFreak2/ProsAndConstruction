@@ -8,7 +8,7 @@ public class DialogueSettings : MonoBehaviour
     {
         if (collision.CompareTag("Player") && npcCharacter.GetComponent<NPCSystem>().GetHasInteractionFinished())
         {
-            NPCSystem[] interactions = npcCharacter.GetComponentsInChildren<NPCSystem>();
+            NPCSystem[] interactions = npcCharacter.GetComponents<NPCSystem>();
             foreach (NPCSystem interaction in interactions)
             {
                 interaction.enabled = !interaction.enabled;
