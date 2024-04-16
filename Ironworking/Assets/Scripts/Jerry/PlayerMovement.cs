@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("Speed", Mathf.Abs(horizontalMovement));
 
-        if (Mathf.Abs(horizontalMovement) > 0f && !IsClimbingLadder())
+        if (Mathf.Abs(horizontalMovement) > 0f && (!IsClimbingLadder() || IsClimbingPaused()))
         {
             Flip(horizontalMovement > 0);
         }
@@ -53,5 +53,9 @@ public class PlayerMovement : MonoBehaviour
     private bool IsClimbingLadder()
     {
         return GetComponent<LadderMovement>() != null && GetComponent<LadderMovement>().GetIsPlayerClimbing();
+    }
+    private bool IsClimbingPaused()
+    {
+        return GetComponent<LadderMovement>() != null && GetComponent<LadderMovement>().GetIsClimbPaused();
     }
 }

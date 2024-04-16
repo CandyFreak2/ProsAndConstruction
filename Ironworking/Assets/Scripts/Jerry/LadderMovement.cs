@@ -9,9 +9,12 @@ public class LadderMovement : MonoBehaviour
     private Rigidbody2D rigidBody;
     private PlayerMovement playerMovement;
 
-    private float startPosY;
-
     public Animator animator;
+
+    [SerializeField] private int collisionCounter = 0;
+    [SerializeField] private bool goBackToGround = false;
+
+    private float beamMaxY, beamMinY;
 
     void Start()
     {
@@ -23,11 +26,27 @@ public class LadderMovement : MonoBehaviour
     {
         verticalMovement = Input.GetAxis("Vertical");
 
-        if (isOnLadder && Mathf.Abs(verticalMovement) > 0f)
+        if (goBackToGround) 
+        {
+            rigidBody.gravityScale = 4f;
+            pauseClimbing = true;
+            isClimbing = false;
+            playerMovement.SetHorizontalMovement(Input.GetAxisRaw("Horizontal"));
+            if (beamMinY >= GetComponent<Collider2D>().bounds.min.y - 0.12f) 
+            {
+                goBackToGround = false;
+            }
+        }
+        else if (isOnLadder && Mathf.Abs(verticalMovement) > 0f)
         {
             isClimbing = true;
             pauseClimbing = false;
             playerMovement.SetHorizontalMovement(0f);
+        }
+        else if (isOnLadder) 
+        {
+            rigidBody.gravityScale = 0f;
+            pauseClimbing = true;
         }
         else
         {
@@ -37,7 +56,7 @@ public class LadderMovement : MonoBehaviour
         }
 
         animator.SetBool("IsClimbing", isClimbing);
-        if (startPosY >= transform.position.y && startPosY <= transform.position.y + 0.02f)
+        if (beamMinY >= GetComponent<Collider2D>().bounds.min.y - 0.12f || beamMaxY <= GetComponent<Collider2D>().bounds.min.y + 0.05f)
         {
             animator.SetBool("IsClimbing", false);
             pauseClimbing = false;
@@ -55,10 +74,15 @@ public class LadderMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isClimbing)
+        if (isClimbing && !goBackToGround)
         {
             rigidBody.gravityScale = 0f;
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, verticalMovement * movementSpeed);
+        }
+        else if(isOnLadder && !goBackToGround)
+        {
+            rigidBody.gravityScale = 0f;
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0f);
         }
     }
 
@@ -66,8 +90,20 @@ public class LadderMovement : MonoBehaviour
     {
         if (collision.CompareTag("Ladder"))
         {
+            Debug.Log("Enter " + collisionCounter);
+            Debug.Log(collision.bounds.max.y +", "+ GetComponent<Collider2D>().bounds.min.y);
             isOnLadder = true;
-            startPosY = collision.transform.position.y;
+            if ((collision.bounds.max.y == beamMaxY && beamMinY == collision.bounds.min.y) || collision.bounds.max.y <= GetComponent<Collider2D>().bounds.min.y + 0.25f)
+            {
+                goBackToGround = false;
+            }
+            beamMaxY = collision.bounds.max.y;
+            beamMinY = collision.bounds.min.y;
+            if (GetComponent<Collider2D>().bounds.center.y > beamMinY && GetComponent<Collider2D>().bounds.center.y < beamMaxY) 
+            {
+                isClimbing = true;
+            }
+            collisionCounter++;
         }
     }
 
@@ -75,14 +111,31 @@ public class LadderMovement : MonoBehaviour
     {
         if (collision.CompareTag("Ladder"))
         {
+            Debug.Log("Exit "+collisionCounter);
+            if (collisionCounter > 0)//really this is counter - 1 >= 0
+            {
+                collisionCounter--;
+            }
+
+            goBackToGround = true;
             isOnLadder = false;
             isClimbing = false;
             playerMovement.SetHorizontalMovement(Input.GetAxisRaw("Horizontal"));
+
+            if (collisionCounter > 0)
+            {
+                isOnLadder = true;
+            }
         }
     }
 
     public bool GetIsPlayerClimbing()
     {
         return isClimbing;
+    }
+
+    public bool GetIsClimbPaused()
+    {
+        return isOnLadder;
     }
 }
