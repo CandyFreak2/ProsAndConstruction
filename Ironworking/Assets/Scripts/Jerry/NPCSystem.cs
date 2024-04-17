@@ -16,7 +16,8 @@ public class NPCSystem : MonoBehaviour
     public float wordSpeed;
     public float delayBetweenLines;
 
-    private bool isTyping, isPlayerNear, canWrite, hasFinishedInteraction;
+    private bool isTyping, isPlayerNear, canWrite;
+    public bool hasFinishedInteraction;
 
     void Update()
     {
@@ -27,6 +28,12 @@ public class NPCSystem : MonoBehaviour
                 dialoguePanel.SetActive(true);
                 StartCoroutine(TypeFormat());
             }
+        }
+
+        // TO SKIP DIALOGUE REQUEST, REMOVE BEFORE FINAL RELEASE
+        if (Input.GetKeyDown(KeyCode.LeftBracket))
+        {
+            hasFinishedInteraction = true;
         }
     }
 
