@@ -6,7 +6,7 @@ public class CameraMovement : MonoBehaviour
 {
     [SerializeField] private float cameraSpeed;
     private Vector2 currentPos;
-    public Vector3 velocity = Vector3.zero;
+    private Vector3 velocity = Vector3.zero;
 
     public bool listensToEngine = true; 
 
