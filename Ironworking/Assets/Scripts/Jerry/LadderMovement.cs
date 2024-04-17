@@ -32,7 +32,7 @@ public class LadderMovement : MonoBehaviour
             pauseClimbing = true;
             isClimbing = false;
             playerMovement.SetHorizontalMovement(Input.GetAxisRaw("Horizontal"));
-            if (beamMinY >= GetComponent<Collider2D>().bounds.min.y - 0.12f) 
+            if (GetIsAtBottom()) 
             {
                 goBackToGround = false;
             }
@@ -56,7 +56,7 @@ public class LadderMovement : MonoBehaviour
         }
 
         animator.SetBool("IsClimbing", isClimbing);
-        if (beamMinY >= GetComponent<Collider2D>().bounds.min.y - 0.12f || beamMaxY <= GetComponent<Collider2D>().bounds.min.y + 0.05f)
+        if (GetIsAtBottom() || GetIsAtTop())
         {
             animator.SetBool("IsClimbing", false);
             pauseClimbing = false;
@@ -81,8 +81,9 @@ public class LadderMovement : MonoBehaviour
         }
         else if(isOnLadder && !goBackToGround)
         {
+            Debug.Log("ladder changed velocity");
             rigidBody.gravityScale = 0f;
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0f);
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
         }
     }
 
@@ -90,8 +91,6 @@ public class LadderMovement : MonoBehaviour
     {
         if (collision.CompareTag("Ladder"))
         {
-            Debug.Log("Enter " + collisionCounter);
-            Debug.Log(collision.bounds.max.y +", "+ GetComponent<Collider2D>().bounds.min.y);
             isOnLadder = true;
             if ((collision.bounds.max.y == beamMaxY && beamMinY == collision.bounds.min.y) || collision.bounds.max.y <= GetComponent<Collider2D>().bounds.min.y + 0.25f)
             {
@@ -111,7 +110,6 @@ public class LadderMovement : MonoBehaviour
     {
         if (collision.CompareTag("Ladder"))
         {
-            Debug.Log("Exit "+collisionCounter);
             if (collisionCounter > 0)//really this is counter - 1 >= 0
             {
                 collisionCounter--;
@@ -137,5 +135,15 @@ public class LadderMovement : MonoBehaviour
     public bool GetIsClimbPaused()
     {
         return isOnLadder;
+    }
+
+    public bool GetIsAtBottom()
+    {
+        return beamMinY >= GetComponent<Collider2D>().bounds.min.y - 0.12f;
+    }
+
+    public bool GetIsAtTop()
+    {
+        return beamMaxY <= GetComponent<Collider2D>().bounds.min.y + 0.05f;
     }
 }

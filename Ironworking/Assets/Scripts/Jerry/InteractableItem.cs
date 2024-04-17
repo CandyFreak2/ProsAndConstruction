@@ -8,6 +8,7 @@ public class InteractableItem : MonoBehaviour
     public UnityEvent interactionEvent;
     public KeyCode interactKey;
     public GameObject eIcon;
+    public GameObject hint;
     public PlayerManager playerManager;
 
     private bool isDebugged = false;
@@ -18,6 +19,9 @@ public class InteractableItem : MonoBehaviour
         {
             eIcon.SetActive(false);
         }
+
+        HideHintText();
+
         if (needsWeldingMask || needsWrench || needsSmallBeam || needsLargeBeam)
         {
             noNeeds = false;
@@ -53,6 +57,10 @@ public class InteractableItem : MonoBehaviour
                     Debug.Log("Missing Tool");
                     isDebugged = true;
                 }
+                if (Input.GetKeyDown(interactKey))
+                {
+                    ShowHintText();
+                }
             }
         }
     }
@@ -70,6 +78,7 @@ public class InteractableItem : MonoBehaviour
             isWithinRange = false;
             DeNotifyPlayer();
             Debug.Log("Player Is Not Within Range");
+            HideHintText();
         }
     }
 
@@ -84,6 +93,22 @@ public class InteractableItem : MonoBehaviour
         if (eIcon != null)
         {
             eIcon.SetActive(false);
+        }
+    }
+
+    public void ShowHintText() 
+    {
+        if (hint != null)
+        {
+            hint.SetActive(true);
+        }
+    }
+
+    public void HideHintText()
+    {
+        if (hint != null)
+        {
+            hint.SetActive(false);
         }
     }
 }
