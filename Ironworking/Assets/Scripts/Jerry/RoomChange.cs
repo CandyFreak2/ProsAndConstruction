@@ -11,16 +11,19 @@ public class RoomChange : MonoBehaviour
 
     public int previousRoomNumber, nextRoomNumber;
 
-    public bool isOnLeftSide;
+    public bool isOnLeftSide, IsOnTop;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            float playerX = collision.transform.position.x;
-            float triggerX = transform.position.x;
+            Vector2 playerPos = collision.transform.position;
+            Vector2 triggerPos = transform.position;
 
-            if ((isOnLeftSide && playerX > triggerX) || (!isOnLeftSide && playerX < triggerX))
+            bool isPlayerOnXAxisRight = playerPos.x > triggerPos.x;
+            bool isPlayerOnYAxisUp = playerPos.y > triggerPos.y;
+
+            if ((isOnLeftSide && !isPlayerOnXAxisRight) || (!isOnLeftSide && isPlayerOnXAxisRight) || (IsOnTop && !isPlayerOnYAxisUp) || (!IsOnTop && isPlayerOnYAxisUp))
             {
                 cameraController.MoveCameraPos(nextRoom);
                 playerManager.SetRoomLocation(nextRoomNumber);
