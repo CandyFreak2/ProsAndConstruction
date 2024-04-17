@@ -298,7 +298,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 22, y: -30}
+  m_AnchoredPosition: {x: 22, y: 5}
   m_SizeDelta: {x: 336.2, y: 89.2}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &37508896
@@ -3064,6 +3064,7 @@ GameObject:
   - component: {fileID: 547639637}
   - component: {fileID: 547639639}
   - component: {fileID: 547639638}
+  - component: {fileID: 547639640}
   m_Layer: 0
   m_Name: LevelTwoRespawn
   m_TagString: Untagged
@@ -3115,7 +3116,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3183,6 +3184,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &547639640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547639636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb119cc234c0e941b03f065c541ac57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxCollider: {fileID: 547639638}
 --- !u!1 &561704773
 GameObject:
   m_ObjectHideFlags: 0
@@ -3689,7 +3703,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f5884487263a1f9489f27040d4d92cee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 479c7a081ff97fb47bbc67bb2c87d154, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4102,7 +4116,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 22, y: -30}
+  m_AnchoredPosition: {x: 22, y: 7}
   m_SizeDelta: {x: 336.2, y: 89.2}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &710484288
@@ -4213,6 +4227,7 @@ GameObject:
   - component: {fileID: 726302151}
   - component: {fileID: 726302153}
   - component: {fileID: 726302152}
+  - component: {fileID: 726302154}
   m_Layer: 0
   m_Name: LevelFiveRespawn
   m_TagString: Untagged
@@ -4264,7 +4279,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4332,6 +4347,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &726302154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726302150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb119cc234c0e941b03f065c541ac57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxCollider: {fileID: 726302152}
 --- !u!1 &759662161
 GameObject:
   m_ObjectHideFlags: 0
@@ -5347,7 +5375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 22, y: -30}
+  m_AnchoredPosition: {x: 22, y: -5}
   m_SizeDelta: {x: 336.2, y: 89.2}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &914744660
@@ -6211,7 +6239,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f5884487263a1f9489f27040d4d92cee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 479c7a081ff97fb47bbc67bb2c87d154, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7430,6 +7458,7 @@ GameObject:
   - component: {fileID: 1378051101}
   - component: {fileID: 1378051102}
   - component: {fileID: 1378051103}
+  - component: {fileID: 1378051104}
   m_Layer: 0
   m_Name: LevelOneRespawn
   m_TagString: Untagged
@@ -7549,6 +7578,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1378051104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378051100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb119cc234c0e941b03f065c541ac57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxCollider: {fileID: 1378051103}
 --- !u!1 &1395340792
 GameObject:
   m_ObjectHideFlags: 0
@@ -9694,7 +9736,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f5884487263a1f9489f27040d4d92cee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 479c7a081ff97fb47bbc67bb2c87d154, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10901,6 +10943,7 @@ GameObject:
   - component: {fileID: 1998872232}
   - component: {fileID: 1998872234}
   - component: {fileID: 1998872233}
+  - component: {fileID: 1998872235}
   m_Layer: 0
   m_Name: LevelThreeRespawn
   m_TagString: Untagged
@@ -10952,7 +10995,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -11020,6 +11063,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1998872235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998872231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb119cc234c0e941b03f065c541ac57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxCollider: {fileID: 1998872233}
 --- !u!1 &2031893261
 GameObject:
   m_ObjectHideFlags: 0
@@ -11551,6 +11607,7 @@ GameObject:
   - component: {fileID: 2102721507}
   - component: {fileID: 2102721509}
   - component: {fileID: 2102721508}
+  - component: {fileID: 2102721510}
   m_Layer: 0
   m_Name: LevelFourRespawn
   m_TagString: Untagged
@@ -11602,7 +11659,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -11670,6 +11727,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2102721510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102721506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb119cc234c0e941b03f065c541ac57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxCollider: {fileID: 2102721508}
 --- !u!1 &2131298782
 GameObject:
   m_ObjectHideFlags: 0
