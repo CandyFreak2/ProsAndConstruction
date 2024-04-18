@@ -1543,6 +1543,7 @@ MonoBehaviour:
   previousRoomNumber: 3
   nextRoomNumber: 4
   isOnLeftSide: 1
+  IsOnTop: 1
 --- !u!61 &196569964
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3177,7 +3178,7 @@ Transform:
   m_GameObject: {fileID: 382927229}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -1, w: 0}
-  m_LocalPosition: {x: -15.887875, y: 12.071208, z: -0.047537662}
+  m_LocalPosition: {x: -13.93, y: 12.071208, z: -0.047537662}
   m_LocalScale: {x: 2, y: 1.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3202,6 +3203,7 @@ MonoBehaviour:
   previousRoomNumber: 2
   nextRoomNumber: 3
   isOnLeftSide: 1
+  IsOnTop: 1
 --- !u!61 &382927232
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3643,7 +3645,8 @@ MonoBehaviour:
   playerManager: {fileID: 23951997}
   previousRoomNumber: 5
   nextRoomNumber: 1
-  isOnLeftSide: 0
+  isOnLeftSide: 1
+  IsOnTop: 1
 --- !u!61 &403184963
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4381,6 +4384,7 @@ MonoBehaviour:
   startingIndex: 0
   wordSpeed: 0.04
   delayBetweenLines: 2.5
+  hasFinishedInteraction: 0
 --- !u!212 &467571595
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4507,6 +4511,7 @@ MonoBehaviour:
   startingIndex: 0
   wordSpeed: 0.04
   delayBetweenLines: 2.5
+  hasFinishedInteraction: 0
 --- !u!114 &467571599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7713,6 +7718,7 @@ MonoBehaviour:
   startingIndex: 0
   wordSpeed: 0.04
   delayBetweenLines: 2.5
+  hasFinishedInteraction: 0
 --- !u!212 &905727975
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8054,7 +8060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSpeed: 1
-  velocity: {x: 0, y: 0, z: 0}
+  listensToEngine: 1
 --- !u!1 &942769647
 GameObject:
   m_ObjectHideFlags: 0
@@ -13619,6 +13625,7 @@ MonoBehaviour:
   previousRoomNumber: 1
   nextRoomNumber: 2
   isOnLeftSide: 1
+  IsOnTop: 0
 --- !u!61 &1676943715
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16239,6 +16246,7 @@ MonoBehaviour:
   previousRoomNumber: 4
   nextRoomNumber: 5
   isOnLeftSide: 1
+  IsOnTop: 0
 --- !u!61 &1997546091
 BoxCollider2D:
   m_ObjectHideFlags: 0
