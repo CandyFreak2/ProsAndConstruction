@@ -4930,6 +4930,10 @@ PrefabInstance:
       propertyPath: hint
       value: 
       objectReference: {fileID: 626233839}
+    - target: {fileID: 5381025855958468039, guid: 5835400f651352d4fb9e55d85b85b722, type: 3}
+      propertyPath: eIcon
+      value: 
+      objectReference: {fileID: 1129824053}
     - target: {fileID: 7599004295750321956, guid: 5835400f651352d4fb9e55d85b85b722, type: 3}
       propertyPath: m_Name
       value: SmallHalfLadder
