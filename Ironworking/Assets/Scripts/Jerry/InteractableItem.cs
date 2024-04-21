@@ -7,6 +7,7 @@ public class InteractableItem : MonoBehaviour
     public bool isWithinRange, needsWrench, needsWeldingMask, needsSmallBeam, needsLargeBeam, noNeeds;
     public UnityEvent interactionEvent;
     public KeyCode interactKey;
+    public KeyCode altInteractKey;
     public GameObject eIcon;
     public GameObject hint;
     public PlayerManager playerManager;
@@ -33,7 +34,7 @@ public class InteractableItem : MonoBehaviour
     void Update() {
         if (isWithinRange && playerManager != null) {
             if ((needsWrench && playerManager.HasWrench()) || (needsWeldingMask && playerManager.HasWelderMask())) {
-                if (Input.GetKeyDown(interactKey)) {
+                if (Input.GetKeyDown(interactKey) || Input.GetKeyDown(altInteractKey)) {
                     interactionEvent.Invoke();
                     if (needsWrench)
                     {
@@ -47,14 +48,14 @@ public class InteractableItem : MonoBehaviour
             }
             else if ((needsLargeBeam && playerManager.HasLargeBeam()) || (needsSmallBeam && playerManager.HasSmallBeam()))
             {
-                if (Input.GetKeyDown(interactKey))
+                if (Input.GetKeyDown(interactKey) || Input.GetKeyDown(altInteractKey))
                 {
                     interactionEvent.Invoke();
                 }
             }
             else if (noNeeds)
             {
-                if (Input.GetKeyDown(interactKey))
+                if (Input.GetKeyDown(interactKey) || Input.GetKeyDown(altInteractKey))
                 {
                     interactionEvent.Invoke();
                     playerManager.PlayInteractSound();
@@ -66,7 +67,7 @@ public class InteractableItem : MonoBehaviour
                 {
                     isDebugged = true;
                 }
-                if (Input.GetKeyDown(interactKey))
+                if (Input.GetKeyDown(interactKey) || Input.GetKeyDown(altInteractKey))
                 {
                     ShowHintText();
                 }

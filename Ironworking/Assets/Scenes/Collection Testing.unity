@@ -1097,7 +1097,7 @@ Transform:
   m_GameObject: {fileID: 485136084}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.56, y: -0.97, z: 0}
+  m_LocalPosition: {x: 2.569, y: -0.901, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2159,6 +2159,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   interactKey: 101
+  altInteractKey: 0
   eIcon: {fileID: 0}
   hint: {fileID: 69168407}
   playerManager: {fileID: 0}
@@ -3332,6 +3333,10 @@ PrefabInstance:
       propertyPath: playerManager
       value: 
       objectReference: {fileID: 1390760628}
+    - target: {fileID: 112832660757518702, guid: 295525c479968b948bfc978b1c2e88e4, type: 3}
+      propertyPath: altInteractKey
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 112832660757518702, guid: 295525c479968b948bfc978b1c2e88e4, type: 3}
       propertyPath: interactionEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -4988,6 +4993,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2030235544192862568, guid: 2ea2d9af682b45749801e911eaefc11a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.032501057
+      objectReference: {fileID: 0}
+    - target: {fileID: 2030235544192862568, guid: 2ea2d9af682b45749801e911eaefc11a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.007
+      objectReference: {fileID: 0}
+    - target: {fileID: 2030235544192862568, guid: 2ea2d9af682b45749801e911eaefc11a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.9172
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351548554357628088, guid: 2ea2d9af682b45749801e911eaefc11a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.297
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563268934995967933, guid: 2ea2d9af682b45749801e911eaefc11a, type: 3}
+      propertyPath: m_Size.x
+      value: 18.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563268934995967933, guid: 2ea2d9af682b45749801e911eaefc11a, type: 3}
+      propertyPath: m_Size.y
+      value: 150.13228
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563268934995967933, guid: 2ea2d9af682b45749801e911eaefc11a, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563268934995967933, guid: 2ea2d9af682b45749801e911eaefc11a, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563268934995967933, guid: 2ea2d9af682b45749801e911eaefc11a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5029207083061487473, guid: 2ea2d9af682b45749801e911eaefc11a, type: 3}
       propertyPath: m_Name
       value: 'LargeHalfLadder '
@@ -4996,13 +5037,17 @@ PrefabInstance:
       propertyPath: hint
       value: 
       objectReference: {fileID: 540911426}
+    - target: {fileID: 6267147452022078186, guid: 2ea2d9af682b45749801e911eaefc11a, type: 3}
+      propertyPath: altInteractKey
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 7695896111470537959, guid: 2ea2d9af682b45749801e911eaefc11a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.5999999
       objectReference: {fileID: 0}
     - target: {fileID: 7695896111470537959, guid: 2ea2d9af682b45749801e911eaefc11a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.92
+      value: -2.948
       objectReference: {fileID: 0}
     - target: {fileID: 7695896111470537959, guid: 2ea2d9af682b45749801e911eaefc11a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5300,7 +5345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1852186246428459141, guid: 5835400f651352d4fb9e55d85b85b722, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.11
+      value: 0.113
       objectReference: {fileID: 0}
     - target: {fileID: 5381025855958468039, guid: 5835400f651352d4fb9e55d85b85b722, type: 3}
       propertyPath: hint
@@ -5310,17 +5355,21 @@ PrefabInstance:
       propertyPath: eIcon
       value: 
       objectReference: {fileID: 1129824053}
+    - target: {fileID: 5381025855958468039, guid: 5835400f651352d4fb9e55d85b85b722, type: 3}
+      propertyPath: altInteractKey
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 7599004295750321956, guid: 5835400f651352d4fb9e55d85b85b722, type: 3}
       propertyPath: m_Name
       value: SmallHalfLadder
       objectReference: {fileID: 0}
     - target: {fileID: 8228123397566203281, guid: 5835400f651352d4fb9e55d85b85b722, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.93
+      value: -8.921
       objectReference: {fileID: 0}
     - target: {fileID: 8228123397566203281, guid: 5835400f651352d4fb9e55d85b85b722, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.9
+      value: -1.865
       objectReference: {fileID: 0}
     - target: {fileID: 8228123397566203281, guid: 5835400f651352d4fb9e55d85b85b722, type: 3}
       propertyPath: m_LocalPosition.z

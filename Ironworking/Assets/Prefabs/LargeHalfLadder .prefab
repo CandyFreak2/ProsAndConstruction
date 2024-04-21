@@ -199,7 +199,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   interactKey: 101
+  altInteractKey: 32
   eIcon: {fileID: 0}
+  hint: {fileID: 0}
   playerManager: {fileID: 0}
 --- !u!1001 &2512320120583589910
 PrefabInstance:
@@ -211,19 +213,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 94296682422464427, guid: aefc1ac3b7c64c14e94365521bf8b4ed, type: 3}
       propertyPath: m_Size.x
-      value: 18.548494
+      value: 18.4
       objectReference: {fileID: 0}
     - target: {fileID: 94296682422464427, guid: aefc1ac3b7c64c14e94365521bf8b4ed, type: 3}
       propertyPath: m_Size.y
-      value: 149.42468
+      value: 150.13228
       objectReference: {fileID: 0}
     - target: {fileID: 94296682422464427, guid: aefc1ac3b7c64c14e94365521bf8b4ed, type: 3}
       propertyPath: m_Offset.x
-      value: -0.037983894
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 94296682422464427, guid: aefc1ac3b7c64c14e94365521bf8b4ed, type: 3}
       propertyPath: m_Offset.y
-      value: 2.1766243
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 94296682422464427, guid: aefc1ac3b7c64c14e94365521bf8b4ed, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 94296682422464427, guid: aefc1ac3b7c64c14e94365521bf8b4ed, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -243,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4535500506500389246, guid: aefc1ac3b7c64c14e94365521bf8b4ed, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.03175172
+      value: 0.032148615
       objectReference: {fileID: 0}
     - target: {fileID: 4535500506500389246, guid: aefc1ac3b7c64c14e94365521bf8b4ed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -251,7 +257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4535500506500389246, guid: aefc1ac3b7c64c14e94365521bf8b4ed, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.9361
+      value: 1.9063
       objectReference: {fileID: 0}
     - target: {fileID: 4535500506500389246, guid: aefc1ac3b7c64c14e94365521bf8b4ed, type: 3}
       propertyPath: m_LocalPosition.z

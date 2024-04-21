@@ -100,6 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWithinRange: 0
+  needsWrench: 0
+  needsWeldingMask: 0
+  needsSmallBeam: 0
+  needsLargeBeam: 0
+  noNeeds: 0
   interactionEvent:
     m_PersistentCalls:
       m_Calls:
@@ -116,7 +121,10 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   interactKey: 101
+  altInteractKey: 32
   eIcon: {fileID: 2275752522105137833}
+  hint: {fileID: 0}
+  playerManager: {fileID: 0}
 --- !u!58 &7401688317527792145
 CircleCollider2D:
   m_ObjectHideFlags: 0
