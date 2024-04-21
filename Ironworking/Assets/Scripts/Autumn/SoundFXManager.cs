@@ -8,6 +8,7 @@ public class SoundFXManager : MonoBehaviour
 
     [SerializeField] private AudioSource soundFXObject;
     [SerializeField] private AudioSource singleSoundFXObject;
+    [SerializeField] private AudioSource MusicSource;
 
     void Awake()
     {
@@ -71,6 +72,28 @@ public class SoundFXManager : MonoBehaviour
         if (audioSource.gameObject != null)
         {
             Destroy(audioSource.gameObject, clipLength);
+        }
+    }
+
+    public void PlaySingleWait(AudioClip audioClip, Transform spawnTransform, float volume)
+    {
+        GameObject singleSound = GameObject.FindWithTag("Single");
+        if (singleSound == null)
+        {
+            AudioSource audioSource = Instantiate(singleSoundFXObject, spawnTransform.position, Quaternion.identity);
+            audioSource.tag = "Single";
+
+            audioSource.clip = audioClip;
+            audioSource.volume = volume;
+
+            audioSource.Play();
+
+            float clipLength = audioSource.clip.length;
+
+            if (audioSource.gameObject != null)
+            {
+                Destroy(audioSource.gameObject, clipLength);
+            }
         }
     }
 }

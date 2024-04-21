@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!IsClimbingLadder() || IsAtBottom())
+        if (!IsClimbingLadder() || IsAtEnds())
         {
             rigidBody.velocity = new Vector2(horizontalMovement * movementSpeed, rigidBody.velocity.y);
         }
@@ -59,9 +59,9 @@ public class PlayerMovement : MonoBehaviour
         return GetComponent<LadderMovement>() != null && GetComponent<LadderMovement>().GetIsClimbPaused();
     }
     
-    private bool IsAtBottom()
+    private bool IsAtEnds()
     {
-        return GetComponent<LadderMovement>() != null && GetComponent<LadderMovement>().GetIsAtBottom();
+        return GetComponent<LadderMovement>() != null && (GetComponent<LadderMovement>().GetIsAtBottom() || GetComponent<LadderMovement>().GetIsAtTop());
 
     }
 

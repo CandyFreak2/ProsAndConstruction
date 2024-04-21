@@ -11,6 +11,7 @@ public class InteractableItem : MonoBehaviour
     public GameObject hint;
     public PlayerManager playerManager;
 
+
     private bool isDebugged = false;
 
     void Start() {
@@ -34,6 +35,14 @@ public class InteractableItem : MonoBehaviour
             if ((needsWrench && playerManager.HasWrench()) || (needsWeldingMask && playerManager.HasWelderMask())) {
                 if (Input.GetKeyDown(interactKey)) {
                     interactionEvent.Invoke();
+                    if (needsWrench)
+                    {
+                        playerManager.PlayWrenchSound();
+                    }
+                    else 
+                    {
+                        playerManager.PlayInteractSound();
+                    }
                 }
             }
             else if ((needsLargeBeam && playerManager.HasLargeBeam()) || (needsSmallBeam && playerManager.HasSmallBeam()))
@@ -48,13 +57,13 @@ public class InteractableItem : MonoBehaviour
                 if (Input.GetKeyDown(interactKey))
                 {
                     interactionEvent.Invoke();
+                    playerManager.PlayInteractSound();
                 }
             }
             else
             {
                 if (!isDebugged)
                 {
-                    Debug.Log("Missing Tool");
                     isDebugged = true;
                 }
                 if (Input.GetKeyDown(interactKey))
@@ -69,7 +78,6 @@ public class InteractableItem : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")) {
             isWithinRange = true;
             NotifyPlayer();
-            Debug.Log("Player Within Range");
         }
     }
 
@@ -77,7 +85,6 @@ public class InteractableItem : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")) {
             isWithinRange = false;
             DeNotifyPlayer();
-            Debug.Log("Player Is Not Within Range");
             HideHintText();
         }
     }

@@ -11,20 +11,24 @@ public class LadderMovement : MonoBehaviour
 
     public Animator animator;
 
-    [SerializeField] private int collisionCounter = 0;
-    [SerializeField] private bool goBackToGround = false;
+    private int collisionCounter = 0;
+    private bool goBackToGround = false;
 
     private float beamMaxY, beamMinY;
+
+    [SerializeField] private AudioClip climbSound;
+    private SoundFXManager soundFX;
 
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         playerMovement = GetComponent<PlayerMovement>();
+        soundFX = GameObject.Find("SoundFXManager").GetComponent<SoundFXManager>();
     }
 
     void Update()
     {
-        verticalMovement = Input.GetAxis("Vertical");
+        verticalMovement = Input.GetAxis("Vertical"); 
 
         if (goBackToGround) 
         {
@@ -69,6 +73,10 @@ public class LadderMovement : MonoBehaviour
         else
         {
             animator.speed = 1f;
+            if (soundFX != null && climbSound != null && !pauseClimbing && !(GetIsAtBottom() || GetIsAtTop()))
+            {
+                soundFX.PlaySingleWait(climbSound, this.transform, 0.5f);
+            }
         }
     }
 
@@ -81,7 +89,6 @@ public class LadderMovement : MonoBehaviour
         }
         else if(isOnLadder && !goBackToGround)
         {
-            Debug.Log("ladder changed velocity");
             rigidBody.gravityScale = 0f;
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
         }

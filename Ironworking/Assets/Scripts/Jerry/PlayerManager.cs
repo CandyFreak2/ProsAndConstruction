@@ -7,13 +7,15 @@ public class PlayerManager : MonoBehaviour
     
     public int roomLocation = 1;
 
-    [SerializeField] private SoundFXManager soundFX;
-    [SerializeField] private UISetter ui;
+    private SoundFXManager soundFX;
+    private UISetter ui;
+
+    [Header("---------Audio Clips---------")]
     [SerializeField] private AudioClip beamPlace;
     [SerializeField] private AudioClip beamPickup;
     [SerializeField] private AudioClip toolPickup;
-    [SerializeField] float audioStartTime;
-    [SerializeField] float audioLength;
+    [SerializeField] private AudioClip interactSound;
+    [SerializeField] private AudioClip wrenchSound;
 
     void Awake()
     {
@@ -129,5 +131,28 @@ public void AddSmallBeam()
     public bool HasLargeBeam()
     {
         return (largeBeams > 0);
+    }
+
+    public void PlayInteractSound() 
+    {
+        if (interactSound != null && soundFX != null)
+        {
+            soundFX.PlaySoundFXFull(interactSound, transform, 1.0f);
+        }
+    }
+
+    public void PlayWrenchSound()
+    {
+        if (soundFX != null)
+        {
+            if (wrenchSound != null)
+            {
+                soundFX.PlaySoundFXFull(wrenchSound, transform, 1.0f);
+            }
+            else if(interactSound != null)
+            {
+                soundFX.PlaySoundFXFull(interactSound, transform, 1.0f);
+            }
+        }
     }
 }
