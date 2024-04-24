@@ -2,20 +2,11 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public enum PlatformConditions
-    {
-        // 0, 1, 2, 3
-        NONE,
-        WRENCH,
-        WELDING_TOOL,
-        BOTH
-    }
-
     public float movementSpeed;
     public int startingPoint;
     public Transform[] rangePoints;
     public bool isPlatformAllowed;
-    public PlatformConditions platformCondition;
+    public PlatformCondition.PlatformConditions platformCondition;
     public int roomToProceed, npcInteraction;
 
     private int currentPointIndex;
@@ -23,7 +14,7 @@ public class MovingPlatform : MonoBehaviour
 
     private void Awake()
     {
-        playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
+        playerManager = FindObjectOfType<PlayerManager>();
     }
 
     void Start()
@@ -49,16 +40,16 @@ public class MovingPlatform : MonoBehaviour
             {
                 switch (platformCondition)
                 {
-                    case PlatformConditions.WRENCH:
+                    case PlatformCondition.PlatformConditions.WRENCH:
                         isPlatformAllowed = playerManager.HasWrench();
                         break;
-                    case PlatformConditions.WELDING_TOOL:
+                    case PlatformCondition.PlatformConditions.WELDING_TOOL:
                         isPlatformAllowed = playerManager.HasWelderMask();
                         break;
-                    case PlatformConditions.BOTH:
+                    case PlatformCondition.PlatformConditions.BOTH:
                         isPlatformAllowed = playerManager.HasWrench() && playerManager.HasWelderMask();
                         break;
-                    case PlatformConditions.NONE:
+                    case PlatformCondition.PlatformConditions.NONE:
                         break;
                     default:
                         isPlatformAllowed = false;
