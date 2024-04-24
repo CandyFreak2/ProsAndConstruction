@@ -16,8 +16,10 @@ public class NPCSystem : MonoBehaviour
     public float wordSpeed;
     public float delayBetweenLines;
 
-    private bool isTyping, isPlayerNear, canWrite;
     public bool hasFinishedInteraction;
+
+    private bool isTyping, isPlayerNear, canWrite, isFasterWords;
+    private const float collegeLevelWordSpeed = 0.02f, collegeLevelDelay = 1.0f;
 
     void Update()
     {
@@ -30,10 +32,9 @@ public class NPCSystem : MonoBehaviour
             }
         }
 
-        // TO SKIP DIALOGUE REQUEST, REMOVE BEFORE FINAL RELEASE
-        if (Input.GetKeyDown(KeyCode.LeftBracket))
+        if (Input.GetKeyDown(KeyCode.LeftBracket) && Application.isEditor)
         {
-            hasFinishedInteraction = true;
+            isFasterWords = !isFasterWords;
         }
     }
 
@@ -99,11 +100,11 @@ public class NPCSystem : MonoBehaviour
         foreach (char letter in dialogue[startingIndex].ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(wordSpeed);
+            yield return new WaitForSeconds(!isFasterWords ? wordSpeed : collegeLevelWordSpeed);
         }
         isTyping = false;
 
-        yield return new WaitForSeconds(delayBetweenLines);
+        yield return new WaitForSeconds(!isFasterWords ? delayBetweenLines : collegeLevelDelay);
 
         if (!isTyping)
         {
