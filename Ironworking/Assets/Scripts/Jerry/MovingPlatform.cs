@@ -6,7 +6,7 @@ public class MovingPlatform : MonoBehaviour
     public int startingPoint;
     public Transform[] rangePoints;
     public bool isPlatformAllowed;
-    public PlatformCondition.PlatformConditions platformCondition;
+    public PlayerTools.Tools requiredTools;
     public int roomToProceed, npcInteraction;
 
     private int currentPointIndex;
@@ -38,18 +38,18 @@ public class MovingPlatform : MonoBehaviour
         {
             if (roomToProceed == playerManager.GetCurrentRoomSelection() || playerManager.GetNPCInteractionCount() == npcInteraction)
             {
-                switch (platformCondition)
+                switch (requiredTools)
                 {
-                    case PlatformCondition.PlatformConditions.WRENCH:
+                    case PlayerTools.Tools.WRENCH:
                         isPlatformAllowed = playerManager.HasWrench();
                         break;
-                    case PlatformCondition.PlatformConditions.WELDING_TOOL:
+                    case PlayerTools.Tools.WELDING_TOOL:
                         isPlatformAllowed = playerManager.HasWelderMask();
                         break;
-                    case PlatformCondition.PlatformConditions.BOTH:
+                    case PlayerTools.Tools.BOTH:
                         isPlatformAllowed = playerManager.HasWrench() && playerManager.HasWelderMask();
                         break;
-                    case PlatformCondition.PlatformConditions.NONE:
+                    case PlayerTools.Tools.NONE:
                         break;
                     default:
                         isPlatformAllowed = false;

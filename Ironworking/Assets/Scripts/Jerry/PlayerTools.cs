@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class PlatformCondition : MonoBehaviour
+public class PlayerTools : MonoBehaviour
 {
-    public enum PlatformConditions
+    public enum Tools
     {
         NONE,
         WRENCH,
