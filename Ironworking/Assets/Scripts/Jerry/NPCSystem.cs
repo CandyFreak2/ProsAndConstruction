@@ -20,6 +20,12 @@ public class NPCSystem : MonoBehaviour
 
     private bool isTyping, isPlayerNear, canWrite, isFasterWords;
     private const float collegeLevelWordSpeed = 0.02f, collegeLevelDelay = 1.0f;
+    private PlayerManager playerManager;
+
+    private void Awake()
+    {
+        playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
+    }
 
     void Update()
     {
@@ -27,6 +33,7 @@ public class NPCSystem : MonoBehaviour
         {
             if (!dialoguePanel.activeInHierarchy && canWrite)
             {
+                playerManager.IncreaseInteractionCount();
                 dialoguePanel.SetActive(true);
                 StartCoroutine(TypeFormat());
             }

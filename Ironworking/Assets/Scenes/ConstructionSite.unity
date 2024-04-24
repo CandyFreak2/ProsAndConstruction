@@ -14100,7 +14100,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 59.4, y: -14}
+  m_AnchoredPosition: {x: 59.4, y: -11.5}
   m_SizeDelta: {x: 86.09, y: 19.55}
   m_Pivot: {x: 0.49999994, y: 0.5}
 --- !u!114 &866727962
@@ -24840,7 +24840,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 52.9, y: -14}
+  m_AnchoredPosition: {x: 52.9, y: -11.5}
   m_SizeDelta: {x: 86.09, y: 19.55}
   m_Pivot: {x: 0.49999994, y: 0.5}
 --- !u!114 &1348628282
@@ -26595,7 +26595,19 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
+      propertyPath: roomToProceed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
+      propertyPath: npcInteraction
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
       propertyPath: isPlatformAllowed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
+      propertyPath: platformCondition
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}

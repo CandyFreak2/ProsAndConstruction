@@ -10,6 +10,8 @@ public class PlayerManager : MonoBehaviour
     private SoundFXManager soundFX;
     private UISetter ui;
 
+    private int numberOfInteractions = 0;
+
     [Header("---------Audio Clips---------")]
     [SerializeField] private AudioClip beamPlace;
     [SerializeField] private AudioClip beamPickup;
@@ -155,4 +157,16 @@ public void AddSmallBeam()
             }
         }
     }
+
+    public int GetNPCInteractionCount()
+    {
+        return numberOfInteractions;
+    }
+
+    public void IncreaseInteractionCount()
+    {
+        numberOfInteractions++;
+        Debug.Log(numberOfInteractions);
+    }
+
 }
