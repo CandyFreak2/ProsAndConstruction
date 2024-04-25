@@ -166,7 +166,6 @@ public void AddSmallBeam()
     public void IncreaseInteractionCount()
     {
         numberOfInteractions++;
-        Debug.Log(numberOfInteractions);
     }
 
 }

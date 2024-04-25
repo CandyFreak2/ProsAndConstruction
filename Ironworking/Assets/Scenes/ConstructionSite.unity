@@ -26607,6 +26607,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
+      propertyPath: npcCountTrigger
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
       propertyPath: isPlatformAllowed
       value: 0
       objectReference: {fileID: 0}
@@ -26625,6 +26629,10 @@ PrefabInstance:
     - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
       propertyPath: rangePoints.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
+      propertyPath: interactionNumToTrigger
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
       propertyPath: rangePoints.Array.data[2]
@@ -31783,6 +31791,10 @@ PrefabInstance:
     - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
       propertyPath: movementSpeed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
+      propertyPath: requiredTools
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
       propertyPath: startingPoint

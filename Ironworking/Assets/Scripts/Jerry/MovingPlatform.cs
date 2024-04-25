@@ -6,11 +6,13 @@ public class MovingPlatform : MonoBehaviour
     public int startingPoint;
     public Transform[] rangePoints;
     public bool isPlatformAllowed;
-    public PlayerTools.Tools requiredTools;
-    public int roomToProceed, npcInteraction;
 
     private int currentPointIndex;
     private PlayerManager playerManager;
+
+    [Header("Conditionals to Trigger")]
+    public PlayerTools.Tools requiredTools;
+    public int npcCountTrigger;
 
     private void Awake()
     {
@@ -36,7 +38,7 @@ public class MovingPlatform : MonoBehaviour
         }
         else
         {
-            if (roomToProceed == playerManager.GetCurrentRoomSelection() || playerManager.GetNPCInteractionCount() == npcInteraction)
+            if (playerManager.GetNPCInteractionCount() == npcCountTrigger)
             {
                 switch (requiredTools)
                 {
@@ -101,5 +103,10 @@ public class MovingPlatform : MonoBehaviour
             isPlatformAllowed = false;
             Debug.Log("Platform Cannot Move");
         }
+    }
+
+    public PlayerTools.Tools GetRequiredTools()
+    {
+        return requiredTools;
     }
 }
