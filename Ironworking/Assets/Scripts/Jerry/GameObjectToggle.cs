@@ -6,11 +6,17 @@ public class GameObjectToggle : MonoBehaviour
     public GameObject sprite;
 
     public PlayerTools.Tools toolConditions;
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    void Awake()
     {
-        if (collision.gameObject.CompareTag("Player") && HasRequestedTool())
+        sprite.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && HasRequestedTool())
         {
-            sprite.SetActive(!sprite.activeSelf);
+            sprite.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 
