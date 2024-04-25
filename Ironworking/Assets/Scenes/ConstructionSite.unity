@@ -26595,8 +26595,12 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
-      propertyPath: roomToProceed
+      propertyPath: requiredTools
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
+      propertyPath: roomToProceed
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1321206031031065184, guid: 686611ed19a9f944a8405ce8fbc5f798, type: 3}
       propertyPath: npcInteraction
@@ -36151,7 +36155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3427635103859209083, guid: 120d3bad594d1544c97e2c1250247e0a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.10623488
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3427635103859209083, guid: 120d3bad594d1544c97e2c1250247e0a, type: 3}
       propertyPath: m_LocalRotation.w
