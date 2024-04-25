@@ -12,12 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: d49ab54a11ee6f5449e7122fec9fda7b
   - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 0ec3a4223f47ad841b73d68b8340c8b8
+  - enabled: 1
     path: Assets/Scenes/Collection Testing.unity
     guid: 72f5516d114d9e742979a49f65d62571
   - enabled: 1
     path: Assets/Scenes/ConstructionSite.unity
     guid: 467a2e5595d65bb49a278fd443ee3f0e
   - enabled: 1
-    path: Assets/Scenes/Credits.unity
-    guid: 0ec3a4223f47ad841b73d68b8340c8b8
+    path: Assets/Scenes/End Screen.unity
+    guid: 6d56eeb35e9cd1845b07525fa0fd40ce
   m_configObjects: {}
