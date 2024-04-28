@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private AudioClip toolPickup;
     [SerializeField] private AudioClip interactSound;
     [SerializeField] private AudioClip wrenchSound;
+    [SerializeField] private AudioClip weldSound;
 
     void Awake()
     {
@@ -139,7 +140,7 @@ public void AddSmallBeam()
     {
         if (interactSound != null && soundFX != null)
         {
-            soundFX.PlaySoundFXFull(interactSound, transform, 1.0f);
+            soundFX.PlaySingle(interactSound, transform, 1.0f);
         }
     }
 
@@ -149,11 +150,27 @@ public void AddSmallBeam()
         {
             if (wrenchSound != null)
             {
-                soundFX.PlaySoundFXFull(wrenchSound, transform, 1.0f);
+                soundFX.PlaySingle(wrenchSound, transform, 1.0f);
             }
             else if(interactSound != null)
             {
-                soundFX.PlaySoundFXFull(interactSound, transform, 1.0f);
+                soundFX.PlaySingle(interactSound, transform, 1.0f);
+            }
+        }
+    }
+
+
+    public void PlayWeldSound()
+    {
+        if (soundFX != null)
+        {
+            if (weldSound != null)
+            {
+                soundFX.PlaySingle(weldSound, transform, 1.0f);
+            }
+            else if (interactSound != null)
+            {
+                soundFX.PlaySingle(interactSound, transform, 1.0f);
             }
         }
     }
