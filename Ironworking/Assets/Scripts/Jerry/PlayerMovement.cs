@@ -4,33 +4,80 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float horizontalMovement;
-    private bool isFacingRight = true;
+    public float horizontalMovement;
+    public bool isFacingRight = true, isOnGround = false;
+    public Animator animator;
 
     [SerializeField] public float movementSpeed = 3.5f;
+    [SerializeField] public float ladderMovement = 1.5f;
     [SerializeField] private Rigidbody2D rigidBody;
-    [SerializeField] private Transform groundPos;
-    [SerializeField] private LayerMask groundLayer;
+
 
     void Update()
     {
         horizontalMovement = Input.GetAxisRaw("Horizontal");
-        Flip();
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMovement));
+
+        if (Mathf.Abs(horizontalMovement) > 0f && (!IsClimbingLadder() || IsClimbingPaused()))
+        {
+            Flip(horizontalMovement > 0);
+        }
     }
 
     private void FixedUpdate()
     {
-        rigidBody.velocity = new Vector2(horizontalMovement * movementSpeed, rigidBody.velocity.y);
+        if (!IsClimbingLadder() || IsAtEnds())
+        {
+            rigidBody.velocity = new Vector2(horizontalMovement * movementSpeed, rigidBody.velocity.y);
+        }
+        else if (IsClimbingLadder()/* && !isOnGround*/)
+        {
+            rigidBody.velocity = new Vector2(horizontalMovement * ladderMovement, rigidBody.velocity.y);
+        }
     }
 
-    private void Flip()
+    private void Flip(bool isFacingRight)
     {
-        if (isFacingRight && horizontalMovement < 0f || !isFacingRight && horizontalMovement > 0f)
+        if (this.isFacingRight != isFacingRight)
         {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
+            this.isFacingRight = isFacingRight;
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        }
+    }
+
+    public void SetHorizontalMovement(float movement)
+    {
+        horizontalMovement = movement;
+    }
+
+    private bool IsClimbingLadder()
+    {
+        return GetComponent<LadderMovement>() != null && GetComponent<LadderMovement>().GetIsPlayerClimbing();
+    }
+    private bool IsClimbingPaused()
+    {
+        return GetComponent<LadderMovement>() != null && GetComponent<LadderMovement>().GetIsClimbPaused();
+    }
+    
+    private bool IsAtEnds()
+    {
+        return GetComponent<LadderMovement>() != null && (GetComponent<LadderMovement>().GetIsAtBottom() || GetComponent<LadderMovement>().GetIsAtTop());
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            isOnGround = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            isOnGround = false;
         }
     }
 }

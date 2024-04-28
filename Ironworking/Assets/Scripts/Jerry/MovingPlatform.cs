@@ -2,17 +2,27 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public float movementSpeed;     
-    public int startingPoint;       
+    public float movementSpeed;
+    public int startingPoint;
     public Transform[] rangePoints;
     public bool isPlatformAllowed;
 
-    private int currentPointIndex; 
+    private int currentPointIndex;
+    private PlayerManager playerManager;
+
+    [Header("Conditionals to Trigger")]
+    public PlayerTools.Tools requiredTools;
+    public int npcCountTrigger;
+
+    private void Awake()
+    {
+        playerManager = FindObjectOfType<PlayerManager>();
+    }
 
     void Start()
     {
         transform.position = rangePoints[startingPoint].position;
-        currentPointIndex = startingPoint; 
+        currentPointIndex = startingPoint;
     }
 
     void Update()
@@ -25,6 +35,29 @@ public class MovingPlatform : MonoBehaviour
             }
 
             MoveTowardsTargetPoint();
+        }
+        else
+        {
+            if (playerManager.GetNPCInteractionCount() == npcCountTrigger)
+            {
+                switch (requiredTools)
+                {
+                    case PlayerTools.Tools.WRENCH:
+                        isPlatformAllowed = playerManager.HasWrench();
+                        break;
+                    case PlayerTools.Tools.WELDING_TOOL:
+                        isPlatformAllowed = playerManager.HasWelderMask();
+                        break;
+                    case PlayerTools.Tools.BOTH:
+                        isPlatformAllowed = playerManager.HasWrench() && playerManager.HasWelderMask();
+                        break;
+                    case PlayerTools.Tools.NONE:
+                        break;
+                    default:
+                        isPlatformAllowed = false;
+                        break;
+                }
+            }
         }
     }
 
@@ -58,14 +91,22 @@ public class MovingPlatform : MonoBehaviour
         collision.transform.SetParent(null);
     }
 
-    public void IsPlatformAllowedToMove() {
-        if (!isPlatformAllowed) {
+    public void IsPlatformAllowedToMove()
+    {
+        if (!isPlatformAllowed)
+        {
             isPlatformAllowed = true;
             Debug.Log("Platform Can Move");
-            // for future usage, anims go below
-        } else if (isActiveAndEnabled) { 
+        }
+        else if (isActiveAndEnabled)
+        {
             isPlatformAllowed = false;
             Debug.Log("Platform Cannot Move");
         }
+    }
+
+    public PlayerTools.Tools GetRequiredTools()
+    {
+        return requiredTools;
     }
 }

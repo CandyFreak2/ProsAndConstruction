@@ -1,0 +1,52 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Collectible : MonoBehaviour
+{
+    [SerializeField] float imageAlpha = 0.5f;
+    [SerializeField] int collectibleID;
+    public PlayerManager playerManager;
+    private bool collected = false;
+
+    private SpriteRenderer spriteRenderer;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        playerManager = GameObject.FindWithTag("Player").GetComponent<PlayerManager>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        //mSpriteRenderer.color = new Color(139f/255, 150f/255, 255f/255, 1f);
+    }
+
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player")) 
+        {
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, imageAlpha);
+            if (!collected)
+            {
+                switch (collectibleID)
+                {
+                    case 0:
+                        playerManager.SetHasWrench(true);
+                        break;
+                    case 1:
+                        playerManager.SetHasWeldingMask(true);
+                        break;
+                    case 2:
+                        playerManager.AddSmallBeam();
+                        break;
+                    case 3:
+                        playerManager.AddLargeBeam();
+                        break;
+                }
+
+                collected = true;
+            }
+
+        }
+    }
+
+}
