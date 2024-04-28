@@ -36377,7 +36377,7 @@ PrefabInstance:
     - target: {fileID: 2096508932091671500, guid: 0f00f228c3a2dd84aa6024b0f45c3cd3, type: 3}
       propertyPath: climbSound
       value: 
-      objectReference: {fileID: 8300000, guid: 0d0d1557363b05d4dba7e20ebbe52756, type: 3}
+      objectReference: {fileID: 8300000, guid: 33a2d46c7e743a8458b383bca8d32c3e, type: 3}
     - target: {fileID: 2096508932091671500, guid: 0f00f228c3a2dd84aa6024b0f45c3cd3, type: 3}
       propertyPath: movementSpeed
       value: 3
