@@ -7,12 +7,12 @@ public class SceneTransitions : MonoBehaviour
 {
     public void LoadSceneByName(string name) 
     {
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(name);
+        SceneManager.LoadSceneAsync(name);
     }
 
     public void LoadSceneByIndex(int index)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(index);
+        SceneManager.LoadSceneAsync(index);
     }
 
     public void ExitGame()
