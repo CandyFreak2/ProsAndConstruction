@@ -12606,8 +12606,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7072460460826234160, guid: 50bf98719c5bc9a48884699d9d397086, type: 3}
-      propertyPath: m_PlayOnAwake
+      propertyPath: Pan2D
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7072460460826234160, guid: 50bf98719c5bc9a48884699d9d397086, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7072460460826234160, guid: 50bf98719c5bc9a48884699d9d397086, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 06784c1f9404dc04b86ee12559ae449a, type: 3}
+    - target: {fileID: 7072460460826234160, guid: 50bf98719c5bc9a48884699d9d397086, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7090139397752844070, guid: 50bf98719c5bc9a48884699d9d397086, type: 3}
       propertyPath: MusicSource
