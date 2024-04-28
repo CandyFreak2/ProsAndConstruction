@@ -96,12 +96,14 @@ public class MovingPlatform : MonoBehaviour
         if (!isPlatformAllowed)
         {
             isPlatformAllowed = true;
-            Debug.Log("Platform Can Move");
+            this.GetComponent<AudioSource>().Play();
+            //Debug.Log("Platform Can Move");
         }
         else if (isActiveAndEnabled)
         {
             isPlatformAllowed = false;
-            Debug.Log("Platform Cannot Move");
+            this.GetComponent<AudioSource>().Stop();
+            //Debug.Log("Platform Cannot Move");
         }
     }
 
