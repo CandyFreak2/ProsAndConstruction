@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(MovingPlatform))]
@@ -30,9 +33,10 @@ public class MovingPlatformEditorInspector : Editor
         EditorGUILayout.PropertyField(isPlatformAllowed);
         EditorGUILayout.PropertyField(playerTool);
 
-        MovingPlatform playerTools = (MovingPlatform) target;
+        MovingPlatform movingPlatform = (MovingPlatform)target;
 
-        if (playerTools.GetRequiredTools() != PlayerTools.Tools.NONE)
+        // Check if the required tools are set to something other than NONE
+        if (movingPlatform.requiredTools != PlayerTools.Tools.NONE)
         {
             EditorGUILayout.PropertyField(numberTrigger);
         }
