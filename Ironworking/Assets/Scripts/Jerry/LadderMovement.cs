@@ -75,7 +75,7 @@ public class LadderMovement : MonoBehaviour
             animator.speed = 1f;
             if (soundFX != null && climbSound != null && !pauseClimbing && !(GetIsAtBottom() || GetIsAtTop()))
             {
-                soundFX.PlaySingleWait(climbSound, this.transform, 0.5f);
+                soundFX.PlaySingleWaitCropped(climbSound, this.transform, 0.5f, 0.45f);
             }
         }
     }

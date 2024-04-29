@@ -29,7 +29,7 @@ public class NPCSystem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerNear && dialoguePanel != null && !hasFinishedInteraction)
+        if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space)) && isPlayerNear && dialoguePanel != null && !hasFinishedInteraction)
         {
             if (!dialoguePanel.activeInHierarchy && canWrite)
             {

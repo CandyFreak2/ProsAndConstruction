@@ -96,6 +96,26 @@ public class SoundFXManager : MonoBehaviour
             }
         }
     }
+
+    public void PlaySingleWaitCropped(AudioClip audioClip, Transform spawnTransform, float volume, float clipLength)
+    {
+        GameObject singleSound = GameObject.FindWithTag("Single");
+        if (singleSound == null)
+        {
+            AudioSource audioSource = Instantiate(singleSoundFXObject, spawnTransform.position, Quaternion.identity);
+            audioSource.tag = "Single";
+
+            audioSource.clip = audioClip;
+            audioSource.volume = volume;
+
+            audioSource.Play();
+
+            if (audioSource.gameObject != null)
+            {
+                Destroy(audioSource.gameObject, clipLength);
+            }
+        }
+    }
 }
 
 //https://www.youtube.com/watch?v=DU7cgVsU2rM tutorial for this code

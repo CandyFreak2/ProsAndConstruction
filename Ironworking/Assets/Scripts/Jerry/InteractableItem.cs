@@ -40,6 +40,10 @@ public class InteractableItem : MonoBehaviour
                     {
                         playerManager.PlayWrenchSound();
                     }
+                    else if (needsWeldingMask)
+                    {
+                        playerManager.PlayWeldSound();
+                    }
                     else 
                     {
                         playerManager.PlayInteractSound();
